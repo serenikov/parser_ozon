@@ -14,6 +14,7 @@ with open('codes.txt', 'r') as f:
 # df = pd.DataFrame(columns=['Код товара', 'Название товара', 'URL страницы с товаром', 'URL первой картинки', 'Цена базовая', 'Цена с учетом скидок без Ozon Карты', 'Цена по Ozon Карте', 'Продавец', 'Количество отзывов', 'Количество видео', 'Количество вопросов', 'Рейтинг товара', 'Все доступные характеристики товара', 'Информация о доставке в Москве'])
 df = pd.DataFrame()
 # Инициализация веб-драйвера
+service = Service(executable_path=r"path_to_driver/chromedriver.exe")
 driver = uc.Chrome()
 
 driver.implicitly_wait(10)
