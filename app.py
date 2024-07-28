@@ -27,7 +27,7 @@ options.add_argument("--no-sandbox") #This make Chromium reachable
 options.add_argument("--no-default-browser-check") #Overrides default choices
 options.add_argument("--no-first-run")
 options.add_argument("--disable-default-apps") 
-driver = webdriver.Chrome('/home/travis/virtualenv/python2.8.2/chromedriver',chrome_options=options)
+driver = webdriver.Chrome('/home/travis/virtualenv/python2.8.2/chromedriver', options = options)
 #driver = uc.Chrome(service = service, options = options)
 
 driver.implicitly_wait(10)
