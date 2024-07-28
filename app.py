@@ -1,11 +1,10 @@
 import pandas as pd
+import undetected_chromedriver as uc
 from bs4 import BeautifulSoup
 import time as tm
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import undetected_chromedriver as uc
-
 
 # Загрузка кодов товаров из файла
 with open('codes.txt', 'r') as f:
@@ -16,7 +15,15 @@ with open('codes.txt', 'r') as f:
 df = pd.DataFrame()
 # Инициализация веб-драйвера
 
-driver = uc.Chrome()
+#driver = uc.Chrome(executable_path='C:/path/to/chromedriver.exe')
+service = Service()
+options = Options()
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--profile-directory=Default")
+options.add_argument("--user-data-dir=C:\\Users\\athar\\AppData\\Local\\Google\\Chrome\\User Data\\")
+
+driver = uc.Chrome(service = service, options = options)
 
 driver.implicitly_wait(10)
 
