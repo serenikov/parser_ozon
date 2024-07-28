@@ -1,9 +1,10 @@
 import pandas as pd
 from bs4 import BeautifulSoup
 import time as tm
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import undetected_chromedriver as uc
+#import undetected_chromedriver as uc
 
 
 # Загрузка кодов товаров из файла
@@ -14,8 +15,13 @@ with open('codes.txt', 'r') as f:
 # df = pd.DataFrame(columns=['Код товара', 'Название товара', 'URL страницы с товаром', 'URL первой картинки', 'Цена базовая', 'Цена с учетом скидок без Ozon Карты', 'Цена по Ozon Карте', 'Продавец', 'Количество отзывов', 'Количество видео', 'Количество вопросов', 'Рейтинг товара', 'Все доступные характеристики товара', 'Информация о доставке в Москве'])
 df = pd.DataFrame()
 # Инициализация веб-драйвера
-service = Service(executable_path=r"path_to_driver/chromedriver.exe")
-driver = uc.Chrome()
+#service = Service(executable_path=r"path_to_driver/chromedriver.exe")
+#driver = uc.Chrome()
+#Исключаем 
+options = webdriver.ChromeOptions()
+options.add_experimental_option('excludeSwitches', ['enable-logging'])
+driver = webdriver.Chrome(executable_path='C:\\chromedriver.exe', options=options)
+driver.get("http://www.google.com")
 
 driver.implicitly_wait(10)
 
