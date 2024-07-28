@@ -1,9 +1,7 @@
 name: Daily pars ozon
 
 on: 
-  schedule:
-    - cron: '* * * * *'
-
+    workflow_dispatch:
 jobs:
     Daily-Run:
         runs-on: ubuntu-latest
