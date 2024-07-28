@@ -20,12 +20,15 @@ df = pd.DataFrame()
 #driver = uc.Chrome(executable_path='C:/path/to/chromedriver.exe')
 service = Service()
 options = Options()
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--profile-directory=Default")
-options.add_argument("--user-data-dir=C:\\Users\\athar\\AppData\\Local\\Google\\Chrome\\User Data\\")
-
-driver = uc.Chrome(service = service, options = options)
+options = webdriver.ChromeOptions()
+options.binary_location = '/usr/bin/chromium-browser'
+#All the arguments added for chromium to work on selenium
+options.add_argument("--no-sandbox") #This make Chromium reachable
+options.add_argument("--no-default-browser-check") #Overrides default choices
+options.add_argument("--no-first-run")
+options.add_argument("--disable-default-apps") 
+driver = webdriver.Chrome('/home/travis/virtualenv/python2.8.2/chromedriver',chrome_options=options)
+#driver = uc.Chrome(service = service, options = options)
 
 driver.implicitly_wait(10)
 
