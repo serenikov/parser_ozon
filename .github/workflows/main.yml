@@ -2,6 +2,9 @@ name: Daily pars ozon
 
 on: 
     workflow_dispatch:
+env:
+    TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN}}
+    TELEGRAM_ID: ${{ secrets.TELEGRAM_ID}}
 jobs:
     Daily-Run:
         runs-on: ubuntu-latest
