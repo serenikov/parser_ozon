@@ -1,5 +1,10 @@
+import config
+import telebot
 import pandas as pd
 import undetected_chromedriver as uc
+import requests
+
+
 from bs4 import BeautifulSoup
 import time as tm
 from selenium import webdriver
@@ -197,6 +202,15 @@ print(df.to_string())
 
 # Сохранение DataFrame в файл
 df.to_excel('products.xlsx', index=False)
+
+with open("products.xlsx", "rb") as filexlsx:
+    files = {"document":filexlsx}
+    title = "products.xlsx"
+    chat_id = "-1001708623925"
+    r = requests.post(method, data={"chat_id":chat_id, "caption":title}, files=files)
+    if r.status_code != 200:
+        raise Exception("send error")
+
 
 
 
