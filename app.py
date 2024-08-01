@@ -18,18 +18,19 @@ df = pd.DataFrame()
 # Инициализация веб-драйвера
 
 #driver = uc.Chrome(executable_path='C:/path/to/chromedriver.exe')
-#driver = uc.Chrome()
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--enable-javascript')
-chrome_options.add_argument('--disable-gpu')
-user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15'
-chrome_options.add_argument('User-Agent={0}'.format(user_agent))
-chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-chrome_options.add_experimental_option('useAutomationExtension', True)
+uc.TARGET_VERSION = 127
+driver = uc.Chrome()
+#chrome_options = webdriver.ChromeOptions()
+#chrome_options.add_argument('--no-sandbox')
+#chrome_options.add_argument('--headless')
+#chrome_options.add_argument('--enable-javascript')
+#chrome_options.add_argument('--disable-gpu')
+#user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15'
+#chrome_options.add_argument('User-Agent={0}'.format(user_agent))
+#chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+#chrome_options.add_experimental_option('useAutomationExtension', True)
 
-driver = uc.Chrome(executable_path='/path_to_your_driver/chromedriver',chrome_options=chrome_options,service_args=['--quiet'])
+#driver = uc.Chrome(executable_path='/path_to_your_driver/chromedriver',chrome_options=chrome_options,service_args=['--quiet'])
 
 driver.implicitly_wait(10)
 
