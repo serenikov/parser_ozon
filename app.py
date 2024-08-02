@@ -15,13 +15,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
 from webdriver_manager.chrome import ChromeDriverManager
-latestchromedriver = ChromeDriverManager().install()
-chrome_options1 = ChromeOptions()
-    chrome_options1.add_argument("--incognito")
-    chrome_options1.add_argument('--disable-popup-blocking')
-    chrome_options1.add_argument("--force-device-scale-factor=0.8")
 #set options
-driver = Chrome(driver_executable_path=latestchromedriver, options=chrome_options1)
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
 # Загрузка кодов товаров из файла
 with open('codes.txt', 'r') as f:
