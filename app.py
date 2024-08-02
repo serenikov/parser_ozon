@@ -42,19 +42,19 @@ for code in codes:
         print(code)
         #получение ссылки на товар через костыли
         #ссылка на главную страницу озон
-        url = 'https://www.ozon.ru/product/matras-ikea-ikea-hovag-firm-zhestkiy-nezavisimye-pruzhiny-160h200-sm-688784293/'
+        url = 'https://www.ozon.ru/'
 
         # Загрузка страницы товара с помощью веб-драйвера
         driver.get(url)
-        tm.sleep(20)
+        tm.sleep(2)
 
-        #find_goods = driver.find_element(By.NAME, 'text')
-        #find_goods.clear()
-        #find_goods.send_keys(code)
-        #tm.sleep(2)
+        find_goods = driver.find_element(By.NAME, 'text')
+        find_goods.clear()
+        find_goods.send_keys(code)
+        tm.sleep(2)
 
-        #find_goods.send_keys(Keys.ENTER)
-        #tm.sleep(2)
+        find_goods.send_keys(Keys.ENTER)
+        tm.sleep(2)
 
         try:
             find_goods = driver.find_element(By.XPATH, '//*[@id="paginatorContent"]/div/div/div/a')
@@ -73,7 +73,7 @@ for code in codes:
         # Получение названия товара
         name_element = soup.find('h1')
         name = name_element.text.strip().replace('"', "&quot;") if name_element else 'No name'
-        print(name)
+        
         # Получение URL первой картинки если первое видео
         if soup.find('div', {"data-widget": "webGallery"}).find('video-player') or soup.find('div', {"data-widget": "webGallery"}).find('video'):
             print('video')
