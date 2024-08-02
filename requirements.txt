@@ -30,3 +30,4 @@ urllib3==1.26.6
 websockets==12.0
 wsproto==1.2.0
 pyTelegramBotAPI==4.21.0
+webdriver_manager=4.0.2
