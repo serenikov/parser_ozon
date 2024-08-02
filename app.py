@@ -204,12 +204,9 @@ print(df.to_string())
 df.to_excel('products.xlsx', index=False)
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 TELEGRAM_ID = os.getenv('TELEGRAM_ID')
-with open("products.xlsx", "rb") as filexlsx:
-    files = {"document":filexlsx}
-    title = "products.xlsx"    
-    r = requests.post(method, data={"chat_id":TELEGRAM_ID, "caption":title}, files=files)
-    if r.status_code != 200:
-        raise Exception("send error")
+bot = telebot.TeleBot(TELEGRAM_TOKEN)
+
+bot.send_message(TELEGRAM_ID, base_price)
 
 
 
