@@ -111,13 +111,13 @@ for code in codes:
             discount_price = price_element[0].text.strip() if price_element[0] else ''
         except:
             discount_price = 0
-         print(discount_price)
+            print(discount_price)
         # Получение цены базовая
         try:
             base_price = price_element[1].text.strip() if price_element[1] is not None else ''
         except:
             base_price = 0
-         print(base_price)
+            print(base_price)
 
         # Получение цены по Ozon Карте
         try:
@@ -125,7 +125,7 @@ for code in codes:
             ozon_card_price = ozon_card_price_element.text.strip() if ozon_card_price_element else ''
         except:
             ozon_card_price = 0
-          print(ozon_card_price)
+            print(ozon_card_price)
 
         # Получение количества отзывов, видео, вопросов
         try:
