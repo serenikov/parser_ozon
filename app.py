@@ -73,6 +73,7 @@ for code in codes:
         # Получение названия товара
         name_element = soup.find('h1')
         name = name_element.text.strip().replace('"', "&quot;") if name_element else 'No name'
+        print(name)
         # Получение URL первой картинки если первое видео
         if soup.find('div', {"data-widget": "webGallery"}).find('video-player') or soup.find('div', {"data-widget": "webGallery"}).find('video'):
             print('video')
@@ -110,12 +111,13 @@ for code in codes:
             discount_price = price_element[0].text.strip() if price_element[0] else ''
         except:
             discount_price = 0
-
+         print(discount_price)
         # Получение цены базовая
         try:
             base_price = price_element[1].text.strip() if price_element[1] is not None else ''
         except:
             base_price = 0
+         print(base_price)
 
         # Получение цены по Ozon Карте
         try:
@@ -123,6 +125,7 @@ for code in codes:
             ozon_card_price = ozon_card_price_element.text.strip() if ozon_card_price_element else ''
         except:
             ozon_card_price = 0
+          print(ozon_card_price)
 
         # Получение количества отзывов, видео, вопросов
         try:
@@ -203,7 +206,7 @@ TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 TELEGRAM_ID = os.getenv('TELEGRAM_ID')
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
-bot.send_message(TELEGRAM_ID, base_price)
+bot.send_message(TELEGRAM_ID, df.to_string())
 
 
 
