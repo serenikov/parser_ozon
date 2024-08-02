@@ -23,7 +23,7 @@ options.add_argument(f"user-agent={my_user_agent}")
  
 # Initialize Chrome WebDriver with the specified options
 uc.TARGET_VERSION = 127
-driver = uc.Chrome(options=options)
+driver = uc.Chrome(browser_executable_path="/usr/bin/google-chrome-beta")
 
 
 # Загрузка кодов товаров из файла
