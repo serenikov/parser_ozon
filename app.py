@@ -22,8 +22,8 @@ options.add_argument("--headless")
 #options.add_argument(f"user-agent={my_user_agent}")
  
 # Initialize Chrome WebDriver with the specified options
-#uc.TARGET_VERSION = 127
-driver = webdriver.Chrome()
+uc.TARGET_VERSION = 126
+driver = uc.Chrome(options=options)
 
 
 # Загрузка кодов товаров из файла
