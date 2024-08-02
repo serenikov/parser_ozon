@@ -1,4 +1,4 @@
-import config
+import os
 import telebot
 import pandas as pd
 import undetected_chromedriver as uc
@@ -202,12 +202,12 @@ print(df.to_string())
 
 # Сохранение DataFrame в файл
 df.to_excel('products.xlsx', index=False)
-
+TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
+TELEGRAM_ID = os.getenv('TELEGRAM_ID')
 with open("products.xlsx", "rb") as filexlsx:
     files = {"document":filexlsx}
-    title = "products.xlsx"
-    chat_id = "-1001708623925"
-    r = requests.post(method, data={"chat_id":chat_id, "caption":title}, files=files)
+    title = "products.xlsx"    
+    r = requests.post(method, data={"chat_id":TELEGRAM_ID, "caption":title}, files=files)
     if r.status_code != 200:
         raise Exception("send error")
 
