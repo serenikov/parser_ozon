@@ -15,8 +15,15 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
 from webdriver_manager.chrome import ChromeDriverManager
-#set options
-driver = webdriver.Chrome(ChromeDriverManager().install())
+
+my_user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
+options = uc.ChromeOptions()
+options.add_argument("--headless")
+options.add_argument(f"user-agent={my_user_agent}")
+ 
+# Initialize Chrome WebDriver with the specified options
+driver = uc.Chrome(options=options)
+
 
 # Загрузка кодов товаров из файла
 with open('codes.txt', 'r') as f:
@@ -25,19 +32,6 @@ with open('codes.txt', 'r') as f:
 # Создание пустого DataFrame для хранения данных
 # df = pd.DataFrame(columns=['Код товара', 'Название товара', 'URL страницы с товаром', 'URL первой картинки', 'Цена базовая', 'Цена с учетом скидок без Ozon Карты', 'Цена по Ozon Карте', 'Продавец', 'Количество отзывов', 'Количество видео', 'Количество вопросов', 'Рейтинг товара', 'Все доступные характеристики товара', 'Информация о доставке в Москве'])
 df = pd.DataFrame()
-# Инициализация веб-драйвера
-
-#driver = uc.Chrome(executable_path='C:/path/to/chromedriver.exe')
-uc.TARGET_VERSION = 127
-chromedriver_path = '/Users/altblog/Downloads/chromedriver-mac-x64/chromedriver'
-options = webdriver.ChromeOptions()
-options.add_experimental_option('excludeSwitches', ['enable-logging'])
-
-# Create a Service instance for chromedriver
-service = Service(chromedriver_path)
-
-# Create a WebDriver instance using the service and options
-driver = webdriver.Chrome(service=service, options=options)
 
 driver.implicitly_wait(10)
 
