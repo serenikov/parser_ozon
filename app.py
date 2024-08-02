@@ -23,7 +23,7 @@ options.add_argument("--headless")
  
 # Initialize Chrome WebDriver with the specified options
 #uc.TARGET_VERSION = 127
-driver = uc.Chrome(options=options)
+driver = webdriver.Chrome()
 
 
 # Загрузка кодов товаров из файла
