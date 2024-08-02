@@ -45,7 +45,7 @@ for code in codes:
 
         # Загрузка страницы товара с помощью веб-драйвера
         driver.get(url)
-        tm.sleep(2)
+        tm.sleep(20)
 
         find_goods = driver.find_element(By.NAME, 'text')
         find_goods.clear()
