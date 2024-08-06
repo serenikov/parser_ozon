@@ -49,7 +49,8 @@ for code in codes:
         driver.get(url)
         tm.sleep(2)
 
-        find_goods = driver.find_element(By.NAME, "text")
+        #find_goods = driver.find_element(By.NAME, "text")
+        find_goods = driver.find_element(By.placeholder, "Искать на Ozon")
         find_goods.clear()
         find_goods.send_keys(code)
         tm.sleep(2)
