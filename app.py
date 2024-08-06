@@ -13,6 +13,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 import undetected_chromedriver as uc
 
 
@@ -48,9 +50,11 @@ for code in codes:
         # Загрузка страницы товара с помощью веб-драйвера
         driver.get(url)
         tm.sleep(10)
-
+        WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.CLASS_NAME, "a4da_32 tsBody400Small"), "Везде"))
         find_goods = driver.find_element(By.NAME, "text")
+ 
         #find_goods = driver.find_element(By.placeholder, "Искать на Ozon")
+        
         find_goods.clear()
         find_goods.send_keys(code)
         tm.sleep(2)
