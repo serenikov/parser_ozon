@@ -48,7 +48,8 @@ url = 'https://www.ozon.ru'
 # Загрузка страницы товара с помощью веб-драйвера
 driver.get(url)
 tm.sleep(2)
-status_code = status_code_first_request(performance_log) status_code
+logs = driver.get_log('performance')
+status_code = status_code_first_request(logs) status_code
 print(status_code) 
 
 # Загрузка кодов товаров из файла
