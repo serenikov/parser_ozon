@@ -33,7 +33,7 @@ caps['goog:loggingPrefs'] = {'performance': 'ALL'}
 options.add_argument('--deny-permission-prompts')
 options.add_argument("--disable-notifications")  
 options.add_argument('--blink-settings=imagesEnabled=false')
-driver = uc.Chrome(headless=True, use_subprocess=False, options=options, version_main=114, desired_capabilities=caps)
+driver = uc.Chrome(headless=True, use_subprocess=False, options=options, version_main=127, desired_capabilities=caps)
 
 driver.implicitly_wait(10)
 
