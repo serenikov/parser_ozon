@@ -56,7 +56,7 @@ tm.sleep(2)
 #logs = driver.get_log('performance')
 #status_code = status_code_first_request(logs)
 
-find_goods = driver.find_element_by_css_selector('div.webPrice')
+find_goods = driver.find_element(By.CSS_SELECTOR, "span[class='mn6_27 m6n_27 mo_27']")
 
 find_goods.click()
 tm.sleep(6)
