@@ -41,7 +41,7 @@ driver.implicitly_wait(10)
 
 # Парсинг каждого товара
 for code in codes:
-    # try:
+     try:
         print(code)
         #получение ссылки на товар через костыли
         #ссылка на главную страницу озон
@@ -49,10 +49,10 @@ for code in codes:
 
         # Загрузка страницы товара с помощью веб-драйвера
         driver.get(url)
+        print(driver.status_code)
         tm.sleep(10)
-        #WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.CLASS_NAME, "a4da_32 tsBody400Small"), "Везде"))
-        
-        find_goods = driver.find_element(By.CSS_SELECTOR, "input[name='text']")
+        #WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.CLASS_NAME, "a4da_32 tsBody400Small"), "Везде"))     
+        #find_goods = driver.find_element(By.CSS_SELECTOR, "input[name='text']")
         #find_goods = driver.find_element(By.NAME, "text")
  
         #find_goods = driver.find_element(By.placeholder, "Искать на Ozon")
@@ -134,50 +134,6 @@ for code in codes:
         except:
             ozon_card_price = 0
             print(ozon_card_price)
-
-        # Получение количества отзывов, видео, вопросов
-        try:
-            reviews_element = soup.find('div', {"data-widget": "webReviewProductScore"}).find('a').find('div')
-            if reviews_element.text.strip().split()[0] == 'Оставить': raise Exception('error')
-            reviews_count = reviews_element.text.strip().split()[0] if reviews_element else ''
-        except:
-            reviews_count = 0
-        try:
-            video_element = soup.find('div', {"data-widget": "webVideosCount"}).find('a').find('div')
-            video_count = video_element.text.strip().split()[0] if video_element else ''
-        except:
-            video_count = 0
-
-        try:
-            questions_element = soup.find('div', {"data-widget": "webQuestionCount"}).find('a').find('div')
-            if questions_element.text.strip().split()[0] == 'Задать': raise Exception('error')
-            questions_count = questions_element.text.strip().split()[0] if questions_element else ''
-        except:
-            questions_count = 0
-
-        print(reviews_count, video_count, questions_count)
-
-        # Получение всех доступных характеристик товара
-        characteristics_name_element = soup.findAll('dt')
-        characteristics_element = soup.findAll('dd')
-        characteristics_zip = zip([element.text.strip() for element in characteristics_name_element],[element.text.strip() for element in characteristics_element])
-        characteristics = ', '.join([element.text.strip() for element in characteristics_element]) if characteristics_element else ''
-
-        # Получение рейтинга
-        try:
-            rate_element = soup.find("span", string=" рейтинг товаров").parent.findAll('span')[0]
-            print(rate_element)
-            rate_info = rate_element.text.strip() if rate_element else ''
-        except:
-            rate_info = 0
-
-        # Получение информации об уцененном товаре
-        damaged_element = soup.find('div', {'class': 'd7b1'})
-        damaged_info = damaged_element.text.strip() if damaged_element else ''
-
-        # Получение продавца
-        seller_element = soup.find('div', {"data-widget":"webCurrentSeller"}).select('a[href*="ozon.ru/seller"]' )
-        seller = seller_element[-1].get('title').strip() if seller_element else ''
 
         # Заполнение DataFrame
         df = pd.concat([
