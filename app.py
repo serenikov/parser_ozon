@@ -40,6 +40,7 @@ driver.implicitly_wait(10)
 def status_code_first_request(performance_log):
     for line in performance_log:     
         try:
+            print(line)
             json_log = json.loads(line['message'])
             if json_log['message']['method'] == 'Network.responseReceived':
                 print('есть лог, статус: ' + json_log['message']['params']['response']['status'])
