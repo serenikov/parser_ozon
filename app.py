@@ -27,12 +27,13 @@ options.add_argument("--headless")
 
 caps = DesiredCapabilities.CHROME
 caps['goog:loggingPrefs'] = {'performance': 'ALL'}
-options = Options()
+#options = Options()
 options.add_argument('--deny-permission-prompts')
 options.add_argument("--disable-notifications")  
 options.add_argument('--blink-settings=imagesEnabled=false')
 driver = uc.Chrome(headless=True, use_subprocess=False, options=options, version_main=108, desired_capabilities=caps)
 
+driver.implicitly_wait(10)
 
 #driver = uc.Chrome(options=options)
 
@@ -45,7 +46,11 @@ def status_code_first_request(performance_log):
                 return json_log['message']['params']['response']['status']
         except:
             pass
+url = 'https://www.ozon.ru'
 
+# Загрузка страницы товара с помощью веб-драйвера
+driver.get(url)
+tm.sleep(2)
 status_code = status_code_first_request(performance_log)
 print(status_code) 
 
