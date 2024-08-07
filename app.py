@@ -43,13 +43,14 @@ def status_code_first_request(performance_log):
                 return json_log['message']['params']['response']['status']
         except:
             pass
+         
 url = 'https://www.ozon.ru'
 
 # Загрузка страницы товара с помощью веб-драйвера
 driver.get(url)
 tm.sleep(2)
 logs = driver.get_log('performance')
-status_code = status_code_first_request(logs) status_code
+status_code = status_code_first_request(logs)
 print(status_code) 
 
 # Загрузка кодов товаров из файла
