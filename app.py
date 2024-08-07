@@ -56,11 +56,14 @@ tm.sleep(2)
 #logs = driver.get_log('performance')
 #status_code = status_code_first_request(logs)
 
-find_goods = driver.find_element(By.XPATH, '//*[@id="paginatorContent"]/div/div/div/a')
+find_goods = driver.find_element(By.XPATH, '//*[@id="layoutPage"]/div[1]/div[3]/div[3]/div[2]/div[1]/div[4]')
+
 find_goods.click()
 tm.sleep(6)
+
 page_source = str(driver.page_source)
 print(page_source) 
+print(find_goods) 
 
 # Загрузка кодов товаров из файла
 #TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
