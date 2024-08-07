@@ -33,36 +33,45 @@ options.add_argument('--blink-settings=imagesEnabled=false')
 
 driver = uc.Chrome(headless=True, use_subprocess=False, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
 
-driver.implicitly_wait(10)
+driver.implicitly_wait(5)
 
 #driver = uc.Chrome(options=options)
 
-def status_code_first_request(performance_log):
-    for line in performance_log:     
-        try:
-            print(line)
-            json_log = json.loads(line['message'])
-            if json_log['message']['method'] == 'Network.responseReceived':
-                print('есть лог, статус: ' + json_log['message']['params']['response']['status'])
-                return json_log['message']['params']['response']['status']
-        except:
-            pass
+#def status_code_first_request(performance_log):
+#    for line in performance_log:     
+#        try:
+#            print(line)
+#            json_log = json.loads(line['message'])
+#            if json_log['message']['method'] == 'Network.responseReceived':
+#                print('есть лог, статус: ' + json_log['message']['params']['response']['status'])
+#                return json_log['message']['params']['response']['status']
+#        except:
+#            pass
          
-url = 'https://www.ozon.ru'
+url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103/'
 
 # Загрузка страницы товара с помощью веб-драйвера
 driver.get(url)
 tm.sleep(2)
-logs = driver.get_log('performance')
-status_code = status_code_first_request(logs)
-print(status_code) 
+#logs = driver.get_log('performance')
+#status_code = status_code_first_request(logs)
+
+try:
+            find_goods = driver.find_element(By.XPATH, '//*[@id="paginatorContent"]/div/div/div/a')
+        except:
+            continue
+        find_goods.click()
+
+        tm.sleep(6)
+page_source = str(driver.page_source)
+print(page_source) 
 
 # Загрузка кодов товаров из файла
-TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
-TELEGRAM_ID = os.getenv('TELEGRAM_ID')
-bot = telebot.TeleBot(TELEGRAM_TOKEN)
+#TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
+#TELEGRAM_ID = os.getenv('TELEGRAM_ID')
+#bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
-bot.send_message(TELEGRAM_ID, status_code)
+#bot.send_message(TELEGRAM_ID, status_code)
 
 
 
