@@ -50,8 +50,10 @@ for code in codes:
         # Загрузка страницы товара с помощью веб-драйвера
         driver.get(url)
         tm.sleep(10)
-        WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.CLASS_NAME, "a4da_32 tsBody400Small"), "Везде"))
-        find_goods = driver.find_element(By.NAME, "text")
+        #WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.CLASS_NAME, "a4da_32 tsBody400Small"), "Везде"))
+        
+        find_goods = driver.find_element(By.CSS_SELECTOR, "input[name='text']")
+        #find_goods = driver.find_element(By.NAME, "text")
  
         #find_goods = driver.find_element(By.placeholder, "Искать на Ozon")
         
