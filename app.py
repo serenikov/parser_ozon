@@ -46,7 +46,7 @@ def status_code_first_request(performance_log):
         except:
             pass
 
-status_code = status_code_first_request(performance_log) status_code
+status_code = status_code_first_request(performance_log)
 print(status_code) 
 
 
