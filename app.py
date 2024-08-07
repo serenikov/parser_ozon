@@ -1,10 +1,8 @@
 import os
 import telebot
 import pandas as pd
-
 import requests
 import webdriver_manager
-
 
 from bs4 import BeautifulSoup
 import time as tm
@@ -17,10 +15,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
 import undetected_chromedriver as uc
-
-
 
 options = uc.ChromeOptions()
 options.add_argument("--headless")
@@ -56,15 +51,12 @@ tm.sleep(2)
 status_code = status_code_first_request(performance_log) status_code
 print(status_code) 
 
-
 # Загрузка кодов товаров из файла
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 TELEGRAM_ID = os.getenv('TELEGRAM_ID')
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
 bot.send_message(TELEGRAM_ID, status_code)
-
-
 
 
 
