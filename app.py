@@ -9,7 +9,7 @@ import webdriver_manager
 from bs4 import BeautifulSoup
 import time as tm
 #from selenium import webdriver
-import undetected_chromedriver.v2 as uc
+import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
