@@ -56,7 +56,7 @@ tm.sleep(2)
 #logs = driver.get_log('performance')
 #status_code = status_code_first_request(logs)
 
-find_goods = driver.find_element(By.XPATH, '//*[@id="layoutPage"]/div[1]/div[3]/div[3]/div[2]/div[1]/div[4]')
+find_goods = driver.find_element(By.ID, 'layoutPage')
 
 find_goods.click()
 tm.sleep(6)
