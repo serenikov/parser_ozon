@@ -40,6 +40,7 @@ driver.implicitly_wait(10)
 def status_code_first_request(performance_log):
 
     for line in performance_log:
+     print('есть лог' + str(line))
         try:
             json_log = json.loads(line['message'])
             if json_log['message']['method'] == 'Network.responseReceived':
@@ -53,7 +54,7 @@ url = 'https://www.ozon.ru'
 driver.get(url)
 tm.sleep(2)
 logs = driver.get_log('performance')
-status_code = status_code_first_request(logs['status'])
+status_code = status_code_first_request(logs)
 print(status_code) 
 
 # Загрузка кодов товаров из файла
