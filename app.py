@@ -38,10 +38,9 @@ driver.implicitly_wait(10)
 #driver = uc.Chrome(options=options)
 
 def status_code_first_request(performance_log):
-
-    for line in performance_log:
-     print('есть лог' + str(line))
+    for line in performance_log:     
         try:
+            print('есть лог' + str(line))
             json_log = json.loads(line['message'])
             if json_log['message']['method'] == 'Network.responseReceived':
                 return json_log['message']['params']['response']['status']
