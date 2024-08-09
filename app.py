@@ -58,11 +58,8 @@ tm.sleep(20)
 #driver.find_element(By.CLASS_NAME, 'rb').click()
 table_button = driver.find_element(By.XPATH, "//button[@class='rb']")
 
-try:
-    WebDriverWait(driver, 15).until(EC.element_to_be_clickable(table_button)).click()
-except WebDriverException as e:
-    print('failed')
-    print(e)
+JavascriptExecutor js = (JavascriptExecutor)driver
+js.executeScript("arguments[0].click();", table_button)
  
 tm.sleep(20)
 #logs = driver.get_log('performance')
