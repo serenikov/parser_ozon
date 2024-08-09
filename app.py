@@ -67,7 +67,7 @@ tm.sleep(20)
 #action.click(on_element = table_button)
 #action.perform()
 
-button = WebDriverWait(driver, timeout, poll_frequency=0.1).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/button")))
+button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/button")))
 button.click()
 
  
