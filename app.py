@@ -28,13 +28,17 @@ options = uc.ChromeOptions()
 #caps['goog:loggingPrefs'] = {'performance': 'ALL'}
 #options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
 #options = Options()
-options.add_argument('--deny-permission-prompts')
-options.add_argument("--disable-notifications")  
+#options.add_argument('--deny-permission-prompts')
+#options.add_argument("--disable-notifications")  
 #options.add_argument('--blink-settings=imagesEnabled=false')
 
 #driver = uc.Chrome(headless=True, use_subprocess=False, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
 #driver = uc.Chrome(version_main=127)
-driver = webdriver.Chrome()
+chrome_options = Options()
+#chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome('/home/<user>/chromedriver',chrome_options=chrome_options)
 
 driver.implicitly_wait(5)
 
