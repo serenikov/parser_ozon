@@ -6,7 +6,7 @@ import webdriver_manager
 
 from bs4 import BeautifulSoup
 import time as tm
-from selenium import webdriver
+#from selenium import webdriver
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -32,7 +32,8 @@ options.add_argument("--disable-notifications")
 #options.add_argument('--blink-settings=imagesEnabled=false')
 
 #driver = uc.Chrome(headless=True, use_subprocess=False, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
-driver = webdriver.Chrome()
+driver = uc.Chrome(headless=True, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
+#driver = webdriver.Chrome()
 
 driver.implicitly_wait(5)
 
@@ -54,8 +55,9 @@ url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-87612
 # Загрузка страницы товара с помощью веб-драйвера
 driver.get(url)
 tm.sleep(20)
-button1 = driver.find_element(By.CLASS_NAME, 'rb').click()
-tm.sleep(20)
+#driver.find_element(By.CLASS_NAME, 'rb').click()
+driver.find_element_by_xpath("//button[@class='rb']").click()
+tm.sleep(50)
 #logs = driver.get_log('performance')
 #status_code = status_code_first_request(logs)
 page_source = str(driver.page_source)
