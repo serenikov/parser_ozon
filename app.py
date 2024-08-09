@@ -38,7 +38,7 @@ chrome_options = Options()
 #chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome('/home/<user>/chromedriver',chrome_options=chrome_options)
+driver = webdriver.Chrome('/home/<user>/chromedriver',options=chrome_options)
 
 driver.implicitly_wait(5)
 
