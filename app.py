@@ -19,7 +19,7 @@ import undetected_chromedriver as uc
 from webdriver_manager.chrome import ChromeDriverManager
 
 options = uc.ChromeOptions()
-options.add_argument("--headless")
+#options.add_argument("--headless")
  
 # Initialize Chrome WebDriver with the specified options
 
@@ -29,7 +29,7 @@ options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
 #options = Options()
 options.add_argument('--deny-permission-prompts')
 options.add_argument("--disable-notifications")  
-options.add_argument('--blink-settings=imagesEnabled=false')
+#options.add_argument('--blink-settings=imagesEnabled=false')
 
 driver = uc.Chrome(headless=True, use_subprocess=False, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
 
