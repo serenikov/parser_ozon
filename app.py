@@ -56,7 +56,7 @@ url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-87612
 driver.get(url)
 tm.sleep(20)
 #driver.find_element(By.CLASS_NAME, 'rb').click()
-driver.find_element(By.XPATH, "//button[@class='rb']").click()
+driver.find_element(By.XPATH, "//button[@class='rb']").sendKeys(Keys.ENTER)
 tm.sleep(20)
 #logs = driver.get_log('performance')
 #status_code = status_code_first_request(logs)
