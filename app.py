@@ -53,7 +53,7 @@ url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-87612
 # Загрузка страницы товара с помощью веб-драйвера
 driver.get(url)
 tm.sleep(10)
-button1 = driver.find_element(By.CLASS_NAME, "rb")
+button1 = driver.find_element(By.ID, "reload-button")
 button1.click()
 tm.sleep(10)
 #logs = driver.get_log('performance')
