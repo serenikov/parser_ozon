@@ -6,7 +6,7 @@ import webdriver_manager
 
 from bs4 import BeautifulSoup
 import time as tm
-#from selenium import webdriver
+from selenium import webdriver
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -31,7 +31,8 @@ options.add_argument('--deny-permission-prompts')
 options.add_argument("--disable-notifications")  
 #options.add_argument('--blink-settings=imagesEnabled=false')
 
-driver = uc.Chrome(headless=True, use_subprocess=False, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
+#driver = uc.Chrome(headless=True, use_subprocess=False, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
+driver = webdriver.Chrome()
 
 driver.implicitly_wait(5)
 
