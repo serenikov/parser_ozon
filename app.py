@@ -53,9 +53,9 @@ url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-87612
 # Загрузка страницы товара с помощью веб-драйвера
 driver.get(url)
 tm.sleep(10)
-#button1 = driver.find_element(By.CLASS_NAME, 'rb')
-#button1.click()
-#tm.sleep(10)
+button1 = driver.find_element(By.CLASS_NAME, 'rb')
+button1.click()
+tm.sleep(10)
 #logs = driver.get_log('performance')
 #status_code = status_code_first_request(logs)
 page_source = str(driver.page_source)
@@ -64,7 +64,7 @@ page_source = str(driver.page_source)
 soup = BeautifulSoup(page_source, 'html.parser')
         # работа с html
         # Получение названия товара
-print(soup)
+ #print(soup)
 
 name_element = soup.find('h1')
 name = name_element.text.strip().replace('"', "&quot;")
