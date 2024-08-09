@@ -72,6 +72,7 @@ button.click()
 
  
 tm.sleep(20)
+driver.implicitly_wait(20)
 #logs = driver.get_log('performance')
 #status_code = status_code_first_request(logs)
 page_source = str(driver.page_source)
