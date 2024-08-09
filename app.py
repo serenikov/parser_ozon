@@ -20,7 +20,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 
 options = uc.ChromeOptions()
-#options.add_argument("--headless")
+options.add_argument("--headless")
  
 # Initialize Chrome WebDriver with the specified options
 
@@ -28,12 +28,12 @@ options = uc.ChromeOptions()
 #caps['goog:loggingPrefs'] = {'performance': 'ALL'}
 #options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
 #options = Options()
-#options.add_argument('--deny-permission-prompts')
-#options.add_argument("--disable-notifications")  
+options.add_argument('--deny-permission-prompts')
+options.add_argument("--disable-notifications")  
 #options.add_argument('--blink-settings=imagesEnabled=false')
 
 #driver = uc.Chrome(headless=True, use_subprocess=False, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
-driver = uc.Chrome(service=Service(ChromeDriverManager().install()), options=options, version_main=127)
+driver = uc.Chrome(headless=False, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
 #driver = webdriver.Chrome()
 
 driver.implicitly_wait(5)
