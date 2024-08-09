@@ -64,7 +64,7 @@ page_source = str(driver.page_source)
 soup = BeautifulSoup(page_source, 'html.parser')
         # работа с html
         # Получение названия товара
-print(soup[: 1000])
+print(soup[:1000])
 print(soup[1000:])
 name_element = soup.find('h1')
 name = name_element.text.strip().replace('"', "&quot;")
