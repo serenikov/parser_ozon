@@ -92,9 +92,9 @@ except:
 #seller = seller_element[-1].get('title').strip() if seller_element else ''
 
 print(name)
-print('Цена без Озон-карты: ' + discount_price)
-print('Базовая цена: ' + base_price)
-print('Цена с Озон-карты: ' + ozon_card_price)
+print('Цена без Озон-карты: ' + str(discount_price))
+print('Базовая цена: ' + str(base_price))
+print('Цена с Озон-карты: ' + str(ozon_card_price))
 #print('Продавец: ' + seller)
 
 # Загрузка кодов товаров из файла
