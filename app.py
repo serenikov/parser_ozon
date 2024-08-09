@@ -55,9 +55,12 @@ url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-87612
 # Загрузка страницы товара с помощью веб-драйвера
 driver.get(url)
 tm.sleep(20)
+
 #driver.find_element(By.CLASS_NAME, 'rb').click()
-table_button = driver.find_element(By.XPATH, "//button[@class='rb']")
-driver.execute_script('arguments[0].click();', table_button)
+#table_button = driver.find_element(By.XPATH, "//button[@class='rb']")
+#driver.execute_script('arguments[0].click();', table_button)
+table_button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable(By.CLASS_NAME, 'rb'))
+table_button.click()
  
 tm.sleep(20)
 #logs = driver.get_log('performance')
