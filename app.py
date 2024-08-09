@@ -52,14 +52,13 @@ url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-87612
 
 # Загрузка страницы товара с помощью веб-драйвера
 driver.get(url)
-tm.sleep(10)
-button1 = driver.(By.CLASS_NAME, 'rb').click()
+tm.sleep(20)
+button1 = driver.find_element(By.CLASS_NAME, 'rb').click()
 button1.click()
 tm.sleep(20)
 #logs = driver.get_log('performance')
 #status_code = status_code_first_request(logs)
 page_source = str(driver.page_source)
-
         # Создание объекта BeautifulSoup для парсинга HTML-кода
 soup = BeautifulSoup(page_source, 'html.parser')
         # работа с html
