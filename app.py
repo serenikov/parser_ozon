@@ -57,9 +57,7 @@ driver.get(url)
 tm.sleep(20)
 #driver.find_element(By.CLASS_NAME, 'rb').click()
 table_button = driver.find_element(By.XPATH, "//button[@class='rb']")
-
-JavascriptExecutor js = (JavascriptExecutor)driver
-js.executeScript("arguments[0].click();", table_button)
+driver.execute_script('arguments[0].click();', table_button)
  
 tm.sleep(20)
 #logs = driver.get_log('performance')
