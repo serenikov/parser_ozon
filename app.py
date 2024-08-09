@@ -88,14 +88,14 @@ except:
     ozon_card_price = 0
 
  # Получение продавца
-seller_element = soup.find('div', {"data-widget":"webCurrentSeller"}).select('a[href*="ozon.ru/seller"]' )
-seller = seller_element[-1].get('title').strip() if seller_element else ''
+#seller_element = soup.find('div', {"data-widget":"webCurrentSeller"}).select('a[href*="ozon.ru/seller"]' )
+#seller = seller_element[-1].get('title').strip() if seller_element else ''
 
 print(name)
 print('Цена без Озон-карты: ' + discount_price)
 print('Базовая цена: ' + base_price)
 print('Цена с Озон-карты: ' + ozon_card_price)
-print('Продавец: ' + seller)
+#print('Продавец: ' + seller)
 
 # Загрузка кодов товаров из файла
 #TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
