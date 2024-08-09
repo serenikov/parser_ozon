@@ -17,6 +17,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 #from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import undetected_chromedriver as uc
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.action_chains import ActionChains
 
 options = uc.ChromeOptions()
 #options.add_argument("--headless")
@@ -61,7 +62,11 @@ tm.sleep(20)
 #driver.execute_script('arguments[0].click();', table_button)
 driver.set_window_size(1440, 1024)
 table_button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CLASS_NAME, 'rb')))
-table_button.click()
+#table_button.click()
+action = ActionChains(driver)
+action.click(on_element = table_button)
+action.perform()
+
  
 tm.sleep(20)
 #logs = driver.get_log('performance')
