@@ -18,19 +18,19 @@ from selenium.webdriver.support.ui import WebDriverWait
 import undetected_chromedriver as uc
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
-from undetected_chromedriver import Chrome
+#from undetected_chromedriver import Chrome
 
 options = uc.ChromeOptions()
-#options.add_argument("--headless")
+options.add_argument("--headless")
 #options.add_argument('--auto-open-devtools-for-tabs')
 #options = ChromeOptions()
 #my_user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
 #options.add_argument(f"user-agent={my_user_agent}")
-options.add_argument("--headless") # Runs Chrome in headless mode.
-options.add_argument('--no-sandbox') # # Bypass OS security model
+#options.add_argument("--headless") # Runs Chrome in headless mode.
+#options.add_argument('--no-sandbox') # # Bypass OS security model
 options.add_argument('start-maximized')
-options.add_argument('disable-infobars')
-options.add_argument("--disable-extensions")
+#options.add_argument('disable-infobars')
+#options.add_argument("--disable-extensions")
 
 
 # Initialize Chrome WebDriver with the specified options
