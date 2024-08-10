@@ -8,6 +8,7 @@ import time as tm
 #from selenium import webdriver
 from seleniumbase import Driver
 
+
 driver = Driver(uc=True, headless=True)
 # Initialize Chrome WebDriver with the specified options         
 url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103/'
@@ -26,8 +27,15 @@ tm.sleep(20)
 #action.click(on_element = table_button)
 #action.perform()
 
-button= driver.find_element(By.XPATH, "/html/body/div/div/div[2]/button")
-button.click()
+Driver.main(__name__, __file__)
+
+
+class ContainsSelectorTests(Driver):
+    def test_contains_selector(self):
+        self.click('a:contains("Обновить")')
+
+#button= driver.find_element(By.XPATH, "/html/body/div/div/div[2]/button")
+#button.click()
 
 #button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/button")))
 action = ActionChains(driver)
