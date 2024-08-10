@@ -26,7 +26,10 @@ tm.sleep(20)
 #action.click(on_element = table_button)
 #action.perform()
 
-button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/button")))
+button= driver.find_element(By.XPATH, "/html/body/div/div/div[2]/button")
+button.click()
+
+#button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/button")))
 action = ActionChains(driver)
 action.move_to_element(button).move_by_offset(0, 0).click().perform()
 driver.execute_script("location.reload()")
