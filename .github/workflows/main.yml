@@ -11,10 +11,10 @@ jobs:
     Daily-Run:
         runs-on: ubuntu-latest
         steps:
-          - name: Create file
-            run: cat ./parser_ozon/google-services.json | base64
-          - name: Putting data
-            run: echo $GOOGLE_SHEETS_API > ./parser_ozon/google-services.json
+          - name: Install dependencies
+            run: |             
+             pip install oauth2client
+             
           - uses: actions/checkout@v4
           - name: Set up Python
         # This is the version of the action for setting up Python, not the Python version.
