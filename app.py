@@ -20,7 +20,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 
 options = uc.ChromeOptions()
-options.add_argument("--headless")
+#options.add_argument("--headless")
  
 # Initialize Chrome WebDriver with the specified options
 
