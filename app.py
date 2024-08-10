@@ -58,6 +58,20 @@ driver.implicitly_wait(5)
          
 url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103/'
 
+driver.execute_script('window.open(\'https://www.google.com\', \'_blank\')') # first open  with chrome
+time.sleep(random.randint(3, 6))
+
+button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[4]/center/input[2]")))
+action = ActionChains(driver)
+action.move_to_element(button).move_by_offset(0, 0).click().perform()
+tm.sleep(20)
+page_source = str(driver.page_source)
+        # Создание объекта BeautifulSoup для парсинга HTML-кода
+soup = BeautifulSoup(page_source, 'html.parser')
+name_element = soup.find('h1')
+name = name_element.text.strip().replace('"', "&quot;")
+
+
 # Загрузка страницы товара с помощью веб-драйвера
 driver.get(url)
 tm.sleep(20)
@@ -78,8 +92,8 @@ action.move_to_element(button).move_by_offset(0, 0).click().perform()
 #button.click()
 
  
-tm.sleep(10)
-driver.implicitly_wait(10)
+tm.sleep(20)
+driver.implicitly_wait(20)
 #logs = driver.get_log('performance')
 #status_code = status_code_first_request(logs)
 page_source = str(driver.page_source)
