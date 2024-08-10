@@ -11,49 +11,19 @@ from seleniumbase import Driver
 
 driver = Driver(uc=True, headless=True)
 # Initialize Chrome WebDriver with the specified options         
-url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103/'
+url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103'
 
-# Загрузка страницы товара с помощью веб-драйвера
-driver.get(url)
-tm.sleep(20)
+apikey = os.getenv('ZENROW_API_KEY')
+params = {
+    'url': url,
+    'apikey': apikey,
+	'autoparse': 'true',
+}
+response = requests.get('https://api.zenrows.com/v1/', params=params)
+#print(response.text)
 
-#driver.find_element(By.CLASS_NAME, 'rb').click()
-#table_button = driver.find_element(By.XPATH, "//button[@class='rb']")
-#driver.execute_script('arguments[0].click();', table_button)
-#driver.set_window_size(1440, 1024)
-#table_button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CLASS_NAME, 'rb')))
-#table_button.click()
-#action = ActionChains(driver)
-#action.click(on_element = table_button)
-#action.perform()
-
-
-
-class ContainsSelectorTests(Driver):
-    def test_contains_selector(self):
-        self.click('a:contains("Обновить")')
-
-#button= driver.find_element(By.XPATH, "/html/body/div/div/div[2]/button")
-#button.click()
-
-#button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/button")))
-action = ActionChains(driver)
-action.move_to_element(button).move_by_offset(0, 0).click().perform()
-driver.execute_script("location.reload()")
-driver.save_screenshot("nowsecure.png")
-
-#document.querySelector("body > div > div > div.bc > button")
-#driver.execute_script('arguments[0].click();', table_button)
-#button.click()
-
- 
-tm.sleep(20)
-driver.implicitly_wait(20)
-#logs = driver.get_log('performance')
-#status_code = status_code_first_request(logs)
-page_source = str(driver.page_source)
         # Создание объекта BeautifulSoup для парсинга HTML-кода
-soup = BeautifulSoup(page_source, 'html.parser')
+soup = BeautifulSoup(response, 'html.parser')
         # работа с html
         # Получение названия товара
  #print(soup)
