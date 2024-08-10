@@ -23,7 +23,7 @@ response = requests.get('https://api.zenrows.com/v1/', params=params)
 #print(response.text)
 
         # Создание объекта BeautifulSoup для парсинга HTML-кода
-soup = BeautifulSoup(response, 'html.parser')
+soup = BeautifulSoup(response.text, 'html.parser')
         # работа с html
         # Получение названия товара
  #print(soup)
