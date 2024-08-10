@@ -6,7 +6,7 @@ import webdriver_manager
 
 from bs4 import BeautifulSoup
 import time as tm
-from selenium import webdriver
+#from selenium import webdriver
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -19,7 +19,7 @@ import undetected_chromedriver as uc
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 
-#options = uc.ChromeOptions()
+options = uc.ChromeOptions()
 #options.add_argument("--headless")
  
 # Initialize Chrome WebDriver with the specified options
@@ -28,17 +28,13 @@ from selenium.webdriver.common.action_chains import ActionChains
 #caps['goog:loggingPrefs'] = {'performance': 'ALL'}
 #options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
 #options = Options()
-#options.add_argument('--deny-permission-prompts')
-#options.add_argument("--disable-notifications")  
+options.add_argument('--deny-permission-prompts')
+options.add_argument("--disable-notifications")  
 #options.add_argument('--blink-settings=imagesEnabled=false')
 
 #driver = uc.Chrome(headless=True, use_subprocess=False, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
-#driver = uc.Chrome(version_main=127)
-chrome_options = webdriver.ChromeOptions()
-#chrome_options.add_argument('--headless')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+driver = uc.Chrome(headless=True, use_subprocess=False, service=Service('/home/<user>/chromedriver', options=options, version_main=127)
+
 
 driver.implicitly_wait(5)
 
