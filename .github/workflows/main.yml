@@ -5,6 +5,7 @@ on:
 env:
     TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN}}
     TELEGRAM_ID: ${{ secrets.TELEGRAM_ID}}
+    ZENROW_API_KEY: ${{ secrets.ZENROW_API_KEY}}
 jobs:
     Daily-Run:
         runs-on: ubuntu-latest
