@@ -2,7 +2,6 @@ import os
 import telebot
 import pandas as pd
 import requests
-import webdriver_manager
 
 from bs4 import BeautifulSoup
 import time as tm
