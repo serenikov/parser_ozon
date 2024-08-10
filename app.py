@@ -24,8 +24,8 @@ soup = BeautifulSoup(response.text, 'html.parser')
 # работа с html
  # Получение названия товара
 
-name_element = soup.find('h1')
-name = name_element.text.strip().replace('"', "&quot;")
+#name_element = soup.find('h1')
+#name = name_element.text.strip().replace('"', "&quot;")
 
 # Получение цены со скидкой без Ozon Карты
 try:
