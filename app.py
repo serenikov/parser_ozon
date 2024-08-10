@@ -20,8 +20,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 
 options = uc.ChromeOptions()
-#options.add_argument("--headless")
- 
+options.add_argument("--headless")
+option.add_argument('--auto-open-devtools-for-tabs')
+
 # Initialize Chrome WebDriver with the specified options
 
 #caps = DesiredCapabilities.CHROME
@@ -33,7 +34,7 @@ options.add_argument("--disable-notifications")
 #options.add_argument('--blink-settings=imagesEnabled=false')
 
 #driver = uc.Chrome(headless=True, use_subprocess=False, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
-driver = uc.Chrome(headless=False, use_subprocess=True, service=Service(ChromeDriverManager().install()), options=options)
+driver = uc.Chrome(headless=False, use_subprocess=True, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
 
 
 driver.implicitly_wait(5)
