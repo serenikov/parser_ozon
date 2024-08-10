@@ -21,7 +21,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 options = uc.ChromeOptions()
 options.add_argument("--headless")
-option.add_argument('--auto-open-devtools-for-tabs')
+options.add_argument('--auto-open-devtools-for-tabs')
 
 # Initialize Chrome WebDriver with the specified options
 
