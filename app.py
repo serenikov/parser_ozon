@@ -81,8 +81,10 @@ tm.sleep(20)
 button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/button")))
 action = ActionChains(driver)
 action.move_to_element(button).move_by_offset(0, 0).click().perform()
-button2 = driver.find_element(By.CLASS_NAME, 'rb')
-button2.sendKeys(Keys.F5)
+
+Actions actionObject = new Actions(driver);
+actionObject.keyDown(Keys.CONTROL).sendKeys(Keys.F5).keyUp(Keys.CONTROL).perform‌​()
+
 
 #document.querySelector("body > div > div > div.bc > button")
 #driver.execute_script('arguments[0].click();', table_button)
