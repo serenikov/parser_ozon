@@ -33,7 +33,7 @@ options.add_argument("--disable-notifications")
 #options.add_argument('--blink-settings=imagesEnabled=false')
 
 #driver = uc.Chrome(headless=True, use_subprocess=False, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
-driver = uc.Chrome(headless=False, use_subprocess=True, service=Service(ChromeDriverManager().install()), options=options, version_main=127)
+driver = uc.Chrome(headless=False, use_subprocess=True, service=Service(ChromeDriverManager().install()), options=options)
 
 
 driver.implicitly_wait(5)
