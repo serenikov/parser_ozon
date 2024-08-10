@@ -19,7 +19,7 @@ import undetected_chromedriver as uc
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 
-options = uc.ChromeOptions()
+#options = uc.ChromeOptions()
 #options.add_argument("--headless")
  
 # Initialize Chrome WebDriver with the specified options
@@ -38,7 +38,7 @@ chrome_options = Options()
 #chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome('/home/<user>/chromedriver',options=chrome_options)
+driver = webdriver.Chrome('/home/<user>/chromedriver', options=chrome_options)
 
 driver.implicitly_wait(5)
 
