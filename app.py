@@ -13,7 +13,7 @@ driver = Driver(uc=True, headless=True)
 # Initialize Chrome WebDriver with the specified options         
 url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103'
 
-apikey = os.getenv('ZENROW_API_KEY')
+apikey = 'db752e79d9168c1f74c544ca5fff335b1ee294c1'
 print(apikey)
 params = {
     'url': url,
