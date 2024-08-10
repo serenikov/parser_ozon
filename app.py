@@ -59,7 +59,7 @@ driver.implicitly_wait(5)
 url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103/'
 
 driver.execute_script('window.open(\'https://www.google.com\', \'_blank\')') # first open  with chrome
-time.sleep(random.randint(3, 6))
+tm.sleep(random.randint(3, 6))
 
 button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[4]/center/input[2]")))
 action = ActionChains(driver)
