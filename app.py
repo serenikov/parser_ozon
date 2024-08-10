@@ -17,7 +17,7 @@ apikey = os.getenv('ZENROW_API_KEY')
 params = {
     'url': url,
     'apikey': apikey,
-	'autoparse': 'true',
+#'autoparse': 'true',
 }
 response = requests.get('https://api.zenrows.com/v1/', params=params)
 #print(response.text)
