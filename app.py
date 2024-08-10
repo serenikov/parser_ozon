@@ -24,7 +24,9 @@ options = uc.ChromeOptions()
 #options.add_argument("--headless")
 #options.add_argument('--auto-open-devtools-for-tabs')
 #options = ChromeOptions()
-options.add_argument("–-headless")
+my_user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
+options.add_argument(f"user-agent={my_user_agent}")
+options.add_argument("–-headless=new")
 
 
 # Initialize Chrome WebDriver with the specified options
@@ -57,20 +59,6 @@ driver.implicitly_wait(5)
 #            pass
          
 url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103/'
-
-driver.execute_script('window.open(\'https://www.google.com\', \'_blank\')') # first open  with chrome
-tm.sleep(6)
-
-button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[4]/center/input[2]")))
-action = ActionChains(driver)
-action.move_to_element(button).move_by_offset(0, 0).click().perform()
-tm.sleep(20)
-page_source = str(driver.page_source)
-        # Создание объекта BeautifulSoup для парсинга HTML-кода
-soup = BeautifulSoup(page_source, 'html.parser')
-name_element = soup.find('h1')
-name = name_element.text.strip().replace('"', "&quot;")
-print(name)
 
 # Загрузка страницы товара с помощью веб-драйвера
 driver.get(url)
