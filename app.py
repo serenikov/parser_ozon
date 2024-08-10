@@ -18,7 +18,8 @@ print(apikey)
 params = {
     'url': url,
     'apikey': apikey,
-#'autoparse': 'true',
+    'js_render': 'true',
+	'premium_proxy': 'true',
 }
 response = requests.get('https://api.zenrows.com/v1/', params=params)
 print(response.text)
