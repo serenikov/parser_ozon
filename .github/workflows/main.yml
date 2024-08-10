@@ -6,7 +6,6 @@ env:
     TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN}}
     TELEGRAM_ID: ${{ secrets.TELEGRAM_ID}}
     ZENROW_API_KEY: ${{ secrets.ZENROW_API_KEY}}
-    GOOGLE_SHEETS_API: ${{ toJson(secrets.GOOGLE_SHEETS_API) }}
 jobs:
     Daily-Run:
         runs-on: ubuntu-latest
@@ -15,8 +14,8 @@ jobs:
             run: cat /home/runner/work/parser_ozon/parser_ozon/app/google-services.json | base64
           - name: Putting data
             env:
-                DATA: ${{ secrets.GOOGLE_SHEETS_API }}
-                run: echo $DATA > home/runner/work/parser_ozon/parser_ozon/app/google-services.json
+             DATA: ${{ secrets.GOOGLE_SHEETS_API }}
+             run: echo $DATA > home/runner/work/parser_ozon/parser_ozon/app/google-services.json
           - uses: actions/checkout@v4
           - name: Set up Python
         # This is the version of the action for setting up Python, not the Python version.
