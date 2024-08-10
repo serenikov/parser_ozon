@@ -24,8 +24,8 @@ options = uc.ChromeOptions()
 #options.add_argument("--headless")
 #options.add_argument('--auto-open-devtools-for-tabs')
 #options = ChromeOptions()
-my_user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
-options.add_argument(f"user-agent={my_user_agent}")
+#my_user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
+#options.add_argument(f"user-agent={my_user_agent}")
 options.add_argument("--headless") # Runs Chrome in headless mode.
 options.add_argument('--no-sandbox') # # Bypass OS security model
 options.add_argument('start-maximized')
