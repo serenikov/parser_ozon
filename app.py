@@ -7,23 +7,23 @@ import time as tm
 
 from gspread import Client, Spreadsheet, Worksheet, service_account, exceptions
 import json
-from oauth2client.service_account import ServiceAccountCredentials
+#from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 
 # Загрузка учетных данных
-credentials_info = json.loads(os.environ['GOOGLE_SHEETS_API'])
-credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_info, ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive'])
+#credentials_info = json.loads(os.environ['GOOGLE_SHEETS_API'])
+#credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_info, ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive'])
 
 # Авторизация
-client = gspread.authorize(credentials)
-sheet = client.open('parstest').sheet1
-sheet.update('A1', 'Hello, World!')
+#client = gspread.authorize(credentials)
+#sheet = client.open('parstest').sheet1
+#sheet.update('A1', 'Hello, World!')
 
 #json = os.getenv('GOOGLE_SHEETS_API')
-#gs = service_account(filename='google-services.json')
+gs = service_account(filename='google-services.json')
 
-#wks = gs.open("parstest").sheet1
-#wks.update('A1', [[1,2], [3,4]])
+wks = gs.open("parstest").sheet1
+wks.update('A1', [[1,2], [3,4]])
      
 url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103'
 
