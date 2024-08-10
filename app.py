@@ -13,7 +13,7 @@ gs = service_account(filename='json')
      
 url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103'
 
-apikey = os.getenv('ZENROW_API_KEY')
+#apikey = os.getenv('ZENROW_API_KEY')
 print(apikey)
 params = {
     'url': url,
