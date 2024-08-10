@@ -82,7 +82,7 @@ button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "
 action = ActionChains(driver)
 action.move_to_element(button).move_by_offset(0, 0).click().perform()
 driver.execute_script("location.reload()")
-
+driver.save_screenshot("nowsecure.png")
 
 #document.querySelector("body > div > div > div.bc > button")
 #driver.execute_script('arguments[0].click();', table_button)
