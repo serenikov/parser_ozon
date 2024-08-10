@@ -8,7 +8,7 @@ import gspread
 from gspread import Client, Spreadsheet, Worksheet, service_account, exceptions
 
 json = os.getenv('GOOGLE_SHEETS_API')
-gs = service_account(filename='json')
+gs = service_account(filename='google-services.json')
 
      
 url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103'
