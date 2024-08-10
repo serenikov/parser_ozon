@@ -23,7 +23,7 @@ from undetected_chromedriver import Chrome
 options = uc.ChromeOptions()
 #options.add_argument("--headless")
 #options.add_argument('--auto-open-devtools-for-tabs')
-options = ChromeOptions()options.add_argument("–headless")
+options = ChromeOptions()options.add_argument("–-headless")
 
 
 # Initialize Chrome WebDriver with the specified options
