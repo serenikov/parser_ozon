@@ -27,7 +27,6 @@ tm.sleep(20)
 #action.click(on_element = table_button)
 #action.perform()
 
-Driver.main(__name__, __file__)
 
 
 class ContainsSelectorTests(Driver):
