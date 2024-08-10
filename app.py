@@ -26,7 +26,7 @@ print(response.text)
 soup = BeautifulSoup(response.text, 'html.parser')
         # работа с html
         # Получение названия товара
- print(soup)
+print(soup)
 
 name_element = soup.find('h1')
 name = name_element.text.strip().replace('"', "&quot;")
