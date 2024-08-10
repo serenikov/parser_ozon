@@ -26,7 +26,11 @@ options = uc.ChromeOptions()
 #options = ChromeOptions()
 my_user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
 options.add_argument(f"user-agent={my_user_agent}")
-options.add_argument("–-headless=new")
+options.add_argument("--headless") # Runs Chrome in headless mode.
+options.add_argument('--no-sandbox') # # Bypass OS security model
+options.add_argument('start-maximized')
+options.add_argument('disable-infobars')
+options.add_argument("--disable-extensions")
 
 
 # Initialize Chrome WebDriver with the specified options
@@ -77,6 +81,11 @@ tm.sleep(20)
 button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div[2]/button")))
 action = ActionChains(driver)
 action.move_to_element(button).move_by_offset(0, 0).click().perform()
+shadow_root = driver.execute_script("return arguments[0].shadowRoot", button)
+driver.execute_script("arguments[0].click()", button)
+
+#document.querySelector("body > div > div > div.bc > button")
+#driver.execute_script('arguments[0].click();', table_button)
 #button.click()
 
  
