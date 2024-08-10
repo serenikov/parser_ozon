@@ -70,7 +70,7 @@ page_source = str(driver.page_source)
 soup = BeautifulSoup(page_source, 'html.parser')
 name_element = soup.find('h1')
 name = name_element.text.strip().replace('"', "&quot;")
-
+print(name)
 
 # Загрузка страницы товара с помощью веб-драйвера
 driver.get(url)
