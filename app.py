@@ -20,13 +20,13 @@ params = {
 #'autoparse': 'true',
 }
 response = requests.get('https://api.zenrows.com/v1/', params=params)
-#print(response.text)
+print(response.text)
 
         # Создание объекта BeautifulSoup для парсинга HTML-кода
 soup = BeautifulSoup(response.text, 'html.parser')
         # работа с html
         # Получение названия товара
- #print(soup)
+ print(soup)
 
 name_element = soup.find('h1')
 name = name_element.text.strip().replace('"', "&quot;")
