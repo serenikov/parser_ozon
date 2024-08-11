@@ -24,7 +24,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_info,
 
 # Авторизация
 client = gspread.authorize(credentials)
-sheet = client.open('скобы конкуренты (цены)').get_worksheet(7)
+sheet = client.open('скобы конкуренты (цены)').worksheet("список озон")
 
 #sheet.update_acell('A1', 'Hello, World!')
      
