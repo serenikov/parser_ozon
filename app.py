@@ -24,7 +24,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_info,
 
 # Авторизация
 client = gspread.authorize(credentials)
-sheet = client.open('parstest').sheet1
+sheet = client.open('скобы конкуренты (цены)').sheet7
 #sheet.update_acell('A1', 'Hello, World!')
      
 url_1 = 'https://www.ozon.ru/product/'
