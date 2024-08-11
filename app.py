@@ -92,8 +92,9 @@ for code in codes:
 		'Цена по Ozon Карте': [ozon_card_price]
 		})
 	], ignore_index=True)
-	dfjs = df.to_json()
-	sheet.append_row(dfjs)
+	#dfjs = df.to_json()
+	#sheet.append_row(dfjs)
+	sheet.update([df.columns.values.tolist()] + df.values.tolist())
 #print(df.to_string())
 
 
