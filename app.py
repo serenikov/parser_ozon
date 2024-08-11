@@ -10,6 +10,14 @@ import json
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 
+# Загрузка кодов товаров из файла
+with open('codes.txt', 'r') as f:
+    codes = f.read().splitlines()
+
+# Создание пустого DataFrame для хранения данных
+# df = pd.DataFrame(columns=['Код товара', 'Название товара', 'URL страницы с товаром', 'Цена базовая', 'Цена с учетом скидок без Ozon Карты', 'Цена по Ozon Карте'])
+df = pd.DataFrame()
+
 # Загрузка учетных данных
 credentials_info = json.loads(os.environ['GOOGLE_SHEETS_API'])
 credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_info, ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive'])
@@ -25,63 +33,79 @@ sheet.update_acell('A1', 'Hello, World!')
 #wks = gs.open("parstest").sheet1
 #wks.update('A1', [[1,2], [3,4]])
      
-url = 'https://www.ozon.ru/product/skoba-stroitelnaya-200-mm-x-8-mm-50-sht-876124103'
+url_1 = 'https://www.ozon.ru/product/'
 
 #apikey = os.getenv('ZENROW_API_KEY')
-print(apikey)
-params = {
-    'url': url,
-    'apikey': apikey,
-    'js_render': 'true',
+for code in codes:
+	url = url_1 + code
+	params = {
+    	'url': url,
+    	'apikey': apikey,
+    	'js_render': 'true',
 	'premium_proxy': 'true',
-}
-response = requests.get('https://api.zenrows.com/v1/', params=params)
+	}
+	response = requests.get('https://api.zenrows.com/v1/', params=params)
 
-# Создание объекта BeautifulSoup для парсинга HTML-кода
-soup = BeautifulSoup(response.text, 'html.parser')
+	# Создание объекта BeautifulSoup для парсинга HTML-кода
+	soup = BeautifulSoup(response.text, 'html.parser')
 
-# работа с html
- # Получение названия товара
+	#работа с html
+ 	# Получение названия товара
 
-#name_element = soup.find('h1')
-#name = name_element.text.strip().replace('"', "&quot;")
+	name_element = soup.find('h1')
+	name = name_element.text.strip().replace('"', "&quot;")
 
-# Получение цены со скидкой без Ozon Карты
-try:
-	price_element = soup.find('span', string="без Ozon Карты").parent.parent.find('div').findAll('span')
-	discount_price = price_element[0].text.strip() if price_element[0] else ''
-	#<span class="mn6_27 m6n_27 mo_27">1 542 ₽</span>
-	discount_price.replace("₽","")
-	discount_price.replace(" ","")
-except:
-	discount_price = 0
+	# Получение цены со скидкой без Ozon Карты
+	try:
+		price_element = soup.find('span', string="без Ozon Карты").parent.parent.find('div').findAll('span')
+		discount_price = price_element[0].text.strip() if price_element[0] else ''
+		#<span class="mn6_27 m6n_27 mo_27">1 542 ₽</span>
+		discount_price.replace("₽","")
+		discount_price.replace(" ","")
+	except:
+		discount_price = 0
 
-# Получение цены базовая
-try:
-	base_price = price_element[1].text.strip() if price_element[1] is not None else ''
-	base_price.replace("₽","")
-	base_price.replace(" ","")
-except:
-	base_price = 0
+	# Получение цены базовая
+	try:
+		base_price = price_element[1].text.strip() if price_element[1] is not None else ''
+		base_price.replace("₽","")
+		base_price.replace(" ","")
+	except:
+		base_price = 0
 
-# Получение цены по Ozon Карте
-try:
-	ozon_card_price_element = soup.find('span', string="c Ozon Картой").parent.find('div').find('span')
-	ozon_card_price = ozon_card_price_element.text.strip() if ozon_card_price_element else ''
-	ozon_card_price.replace("₽","")
-	ozon_card_price.replace(" ","")
-except:
-    ozon_card_price = 0
+	# Получение цены по Ozon Карте
+	try:
+		ozon_card_price_element = soup.find('span', string="c Ozon Картой").parent.find('div').find('span')
+		ozon_card_price = ozon_card_price_element.text.strip() if ozon_card_price_element else ''
+		ozon_card_price.replace("₽","")
+		ozon_card_price.replace(" ","")
+	except:
+    		ozon_card_price = 0
 
- # Получение продавца
-seller_element = soup.find('div', {"data-widget":"webCurrentSeller"}).select('a[href*="ozon.ru/seller"]' )
-seller = seller_element[-1].get('title').strip() if seller_element else ''
+ 	# Получение продавца
+	#seller_element = soup.find('div', {"data-widget":"webCurrentSeller"}).select('a[href*="ozon.ru/seller"]' )
+	#seller = seller_element[-1].get('title').strip() if seller_element else ''
+	# Заполнение DataFrame
+        df = pd.concat([
+            df, pd.DataFrame({
+                'Код товара': [code],
+                'Название товара': [name],
+                'URL страницы с товаром': [page_url],
+                'Цена базовая': [base_price],
+                'Цена с учетом скидок без Ozon Карты': [discount_price],
+                'Цена по Ozon Карте': [ozon_card_price],
+                **dict(characteristics_zip)
+            })
+        ], ignore_index=True)
+	sheet.append_row(df)
+#print(df.to_string())
 
-print(name)
-print('Цена без Озон-карты: ' + str(discount_price))
-print('Базовая цена: ' + str(base_price))
-print('Цена с Озон-карты: ' + str(ozon_card_price))
-print('Продавец: ' + seller)
+
+#print(name)
+#print('Цена без Озон-карты: ' + str(discount_price))
+#print('Базовая цена: ' + str(base_price))
+#print('Цена с Озон-карты: ' + str(ozon_card_price))
+#print('Продавец: ' + seller)
 
 # Загрузка кодов товаров из файла
 #TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
