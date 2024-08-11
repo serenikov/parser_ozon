@@ -45,9 +45,11 @@ for code in codes:
 
 	#работа с html
  	# Получение названия товара
-
-	#name_element = soup.find('h1')
-	#name = name_element.text.strip().replace('"', "&quot;")
+	try:
+		name_element = soup.find('h1')
+		name = name_element.text.strip().replace('"', "&quot;")
+	except:
+		name = ''
 
 	# Получение цены со скидкой без Ozon Карты
 	try:
