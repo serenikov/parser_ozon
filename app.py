@@ -57,16 +57,16 @@ for code in codes:
 		price_element = soup.find('span', string="без Ozon Карты").parent.parent.find('div').findAll('span')
 		discount_price = price_element[0].text.strip() if price_element[0] else ''
 		#<span class="mn6_27 m6n_27 mo_27">1 542 ₽</span>
-		discount_price.replace("₽","")
-		discount_price.replace(" ","")
+		discount_price = discount_price.replace("₽","")
+		discount_price = discount_price.replace(" ","")
 	except:
 		discount_price = 0
 
 	# Получение цены базовая
 	try:
 		base_price = price_element[1].text.strip() if price_element[1] is not None else ''
-		base_price.replace("₽","")
-		base_price.replace(" ","")
+		base_price = base_price.replace("₽","")
+		base_price = base_price.replace(" ","")
 	except:
 		base_price = 0
 
@@ -74,8 +74,8 @@ for code in codes:
 	try:
 		ozon_card_price_element = soup.find('span', string="c Ozon Картой").parent.find('div').find('span')
 		ozon_card_price = ozon_card_price_element.text.strip() if ozon_card_price_element else ''
-		ozon_card_price.replace("₽","")
-		ozon_card_price.replace(" ","")
+		ozon_card_price = ozon_card_price.replace("₽","")
+		ozon_card_price = ozon_card_price.replace(" ","")
 	except:
     		ozon_card_price = 0
 
