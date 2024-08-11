@@ -31,3 +31,4 @@ pyTelegramBotAPI==4.22.0
 seleniumbase==4.29.8
 gspread==6.1.2
 httplib2
+oauth2client
