@@ -94,7 +94,7 @@ for code in codes:
 	], ignore_index=True)
 	#dfjs = df.to_json()
 	#sheet.append_row(dfjs)
-	sheet.update([df.columns.values.tolist()] + df.values.tolist())
+sheet.update([df.columns.values.tolist()] + df.values.tolist())
 #print(df.to_string())
 
 
