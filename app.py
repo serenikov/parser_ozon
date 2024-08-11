@@ -15,8 +15,8 @@ with open('codes.txt', 'r') as f:
     codes = f.read().splitlines()
 
 # Создание пустого DataFrame для хранения данных
-# df = pd.DataFrame(columns=['Код товара', 'Название товара', 'URL страницы с товаром', 'Цена базовая', 'Цена с учетом скидок без Ozon Карты', 'Цена по Ozon Карте'])
-df = pd.DataFrame()
+df = pd.DataFrame(columns=['Код товара', 'Название товара', 'URL страницы с товаром', 'Цена базовая', 'Цена с учетом скидок без Ozon Карты', 'Цена по Ozon Карте'])
+#df = pd.DataFrame()
 
 # Загрузка учетных данных
 credentials_info = json.loads(os.environ['GOOGLE_SHEETS_API'])
@@ -25,35 +25,29 @@ credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_info,
 # Авторизация
 client = gspread.authorize(credentials)
 sheet = client.open('parstest').sheet1
-sheet.update_acell('A1', 'Hello, World!')
-
-#json = os.getenv('GOOGLE_SHEETS_API')
-#gs = service_account(filename='google-services.json')
-
-#wks = gs.open("parstest").sheet1
-#wks.update('A1', [[1,2], [3,4]])
+#sheet.update_acell('A1', 'Hello, World!')
      
 url_1 = 'https://www.ozon.ru/product/'
 
 #apikey = os.getenv('ZENROW_API_KEY')
 for code in codes:
-	url = url_1 + code
-	params = {
-    	'url': url,
-    	'apikey': apikey,
-    	'js_render': 'true',
-	'premium_proxy': 'true',
-	}
-	response = requests.get('https://api.zenrows.com/v1/', params=params)
+	#url = url_1 + code
+	#params = {
+    	#'url': url,
+    	#'apikey': apikey,
+    	#'js_render': 'true',
+	#'premium_proxy': 'true',
+	#}
+	#response = requests.get('https://api.zenrows.com/v1/', params=params)
 
 	# Создание объекта BeautifulSoup для парсинга HTML-кода
-	soup = BeautifulSoup(response.text, 'html.parser')
+	#soup = BeautifulSoup(response.text, 'html.parser')
 
 	#работа с html
  	# Получение названия товара
 
-	name_element = soup.find('h1')
-	name = name_element.text.strip().replace('"', "&quot;")
+	#name_element = soup.find('h1')
+	#name = name_element.text.strip().replace('"', "&quot;")
 
 	# Получение цены со скидкой без Ozon Карты
 	try:
