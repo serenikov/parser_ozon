@@ -30,19 +30,19 @@ sheet = client.open('скобы конкуренты (цены)').worksheet("с�
      
 url_1 = 'https://www.ozon.ru/product/'
 
-#apikey = os.getenv('ZENROW_API_KEY')
+apikey = os.getenv('ZENROW_API_KEY')
 for code in codes:
 	page_url = url_1 + code
-	#params = {
-    	#'url': page_url,
-    	#'apikey': apikey,
-    	#'js_render': 'true',
-	#'premium_proxy': 'true',
-	#}
-	#response = requests.get('https://api.zenrows.com/v1/', params=params)
+	params = {
+    	'url': page_url,
+    	'apikey': apikey,
+    	'js_render': 'true',
+	'premium_proxy': 'true',
+	}
+	response = requests.get('https://api.zenrows.com/v1/', params=params)
 
 	# Создание объекта BeautifulSoup для парсинга HTML-кода
-	#soup = BeautifulSoup(response.text, 'html.parser')
+	soup = BeautifulSoup(response.text, 'html.parser')
 
 	#работа с html
  	# Получение названия товара
