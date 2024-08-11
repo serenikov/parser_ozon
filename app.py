@@ -93,8 +93,7 @@ for code in codes:
                 'URL страницы с товаром': [page_url],
                 'Цена базовая': [base_price],
                 'Цена с учетом скидок без Ozon Карты': [discount_price],
-                'Цена по Ozon Карте': [ozon_card_price],
-                **dict(characteristics_zip)
+                'Цена по Ozon Карте': [ozon_card_price]
             })
         ], ignore_index=True)
 	sheet.append_row(df)
