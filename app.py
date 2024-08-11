@@ -17,7 +17,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_info,
 # Авторизация
 client = gspread.authorize(credentials)
 sheet = client.open('parstest').sheet1
-sheet.update('A1', 'Hello, World!')
+sheet.update_acell('A1', 'Hello, World!')
 
 #json = os.getenv('GOOGLE_SHEETS_API')
 #gs = service_account(filename='google-services.json')
