@@ -86,16 +86,16 @@ for code in codes:
 	#seller_element = soup.find('div', {"data-widget":"webCurrentSeller"}).select('a[href*="ozon.ru/seller"]' )
 	#seller = seller_element[-1].get('title').strip() if seller_element else ''
 	# Заполнение DataFrame
-        df = pd.concat([
-            df, pd.DataFrame({
-                'Код товара': [code],
-                'Название товара': [name],
+	df = pd.concat([
+		df, pd.DataFrame({
+		'Код товара': [code],
+		'Название товара': [name],
                 'URL страницы с товаром': [page_url],
                 'Цена базовая': [base_price],
                 'Цена с учетом скидок без Ozon Карты': [discount_price],
-                'Цена по Ozon Карте': [ozon_card_price]
-            })
-        ], ignore_index=True)
+		'Цена по Ozon Карте': [ozon_card_price]
+		})
+	], ignore_index=True)
 	sheet.append_row(df)
 #print(df.to_string())
 
