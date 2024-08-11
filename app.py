@@ -11,7 +11,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 
 # Загрузка учетных данных
-credentials_info = json.loads(os.getenv['GOOGLE_SHEETS_API'])
+credentials_info = json.loads(os.environ['GOOGLE_SHEETS_API'])
 credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_info, ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive'])
 
 # Авторизация
