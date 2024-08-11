@@ -28,10 +28,10 @@ sheet = client.open('parstest').sheet1
 #sheet.update_acell('A1', 'Hello, World!')
      
 url_1 = 'https://www.ozon.ru/product/'
-
+page_url = url_1 + code
 #apikey = os.getenv('ZENROW_API_KEY')
 for code in codes:
-	#url = url_1 + code
+	#url = page_url
 	#params = {
     	#'url': url,
     	#'apikey': apikey,
