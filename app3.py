@@ -74,18 +74,18 @@ while True:
 			elementTwo = wait.until(EC.element_to_be_clickable(button2))
 			elementTwo.click();
 			print('Нажали "поиск"')
-   			break;
+			break
 		except:
 			print('Не нашли "поиск")
+	except:
+		print('не нажали "обновить"')
+		print(e)
+  
 		#button1 = driver.find_element(By.CLASS_NAME, "rb")
 		#wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "rb")))
 		#driver.execute_script("arguments[0].click();", button1)
 		#print('Нажали "обновить"')
-		#button2 = driver.find_element(By.ID, "stickyHeader")
-	except WebDriverException as e:
-		print('не нажали "обновить"')
-		print(e)
-    	
+		#button2 = driver.find_element(By.ID, "stickyHeader")    	
 #try:
 #	button1 = driver.find_element(By.CLASS_NAME, "rb")
 #	#WebDriverWait(driver, 20).until(EC.element_to_be_clickable(button1)).click()
