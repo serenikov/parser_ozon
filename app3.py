@@ -69,6 +69,8 @@ while True:
 		n = n + 1
 		print('Нажали "обновить" ' + str(n) + ' раз')
 		tm.sleep(10)
+		if n == 5:
+			break
 		try:
 			button2 = driver.find_element(By.ID, "stickyHeader")
 			elementTwo = wait.until(EC.element_to_be_clickable(button2))
