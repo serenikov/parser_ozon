@@ -41,14 +41,17 @@ driver.get(url)
 tm.sleep(2)
 driver.implicitly_wait(10)
 driver.get(url)
-os.system('cls||clear')
+os.system('clear')
 tm.sleep(2)
 try: 
 	button1 = driver.find_element(By.CLASS_NAME, "rb")
 	button1.click()
-	tm.sleep(3)
+	print('Нажали "обновить"')
+	tm.sleep(10)
+	print('Подождали 10 сек')
 except:
-	button1 = ''	
+	button1 = ''
+	print('не нажали "обновить"')
 
 body = driver.find_element(By.TAG_NAME, 'body')
 body.send_keys(Keys.PAGE_DOWN)	
@@ -133,7 +136,7 @@ if status == '':
 # Заполнение DataFrame
 print('ID товара: ' + str(code))
 print('Наименование товара: ' + str(name))
-print('Ссылка на товар: ' + str(page_url))
+print('Ссылка на товар: ' + str(url))
 print('Цена товара: ' + str(d_price))
 print('ID продавца: ' + str(id_seller))
 print('Наименование продавца: ' + str(seller))	
@@ -143,7 +146,7 @@ df = pd.concat([
 		df, pd.DataFrame({
 		'Код товара': [int(code)],
 		'Название товара': [name],
-		'URL страницы с товаром': [page_url],
+		'URL страницы с товаром': [url],
 		'Цена с учетом скидок без Ozon Карты': [int(d_price)],
 		'Ссылка продавца': [href_seller],
 		'Наименование продавца': [seller],
