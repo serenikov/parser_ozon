@@ -24,12 +24,16 @@ df = pd.DataFrame(columns=['Код товара',
                            'Статус'])
 url = 'https://www.ozon.ru/product/876124103/'
 
-chrome_options = Options()
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
+options = Options()
+options.binary_location = "C:\\path\\to\\chrome.exe"    #chrome binary location specified here
+options.add_argument("--start-maximized") #open Browser in maximized mode
+options.add_argument("--no-sandbox") #bypass OS security model
+options.add_argument("--disable-dev-shm-usage") #overcome limited resource problems
+options.add_experimental_option("excludeSwitches", ["enable-automation"])
+options.add_experimental_option('useAutomationExtension', False)
+driver = webdriver.Chrome(options=options, executable_path=r'C:\path\to\chromedriver.exe')
+driver.get(url)
 
-driver = webdriver.Chrome('/home/<user>/chromedriver',chrome_options=chrome_options)
 #driver = webdriver.Chrome()
 tm.sleep(2)
 driver.implicitly_wait(10)
