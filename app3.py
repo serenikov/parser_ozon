@@ -22,6 +22,7 @@ df = pd.DataFrame(columns=['Код товара',
                            'Статус'])
 url = 'https://www.ozon.ru/product/876124103/'
 driver = webdriver.Chrome()
+tm.sleep(2)
 driver.implicitly_wait(10)
 driver.get(url)
 os.system('cls||clear')
