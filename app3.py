@@ -54,7 +54,7 @@ tm.sleep(2)
 #	print('не нажали "обновить"')
 button1 = driver.find_element(By.CLASS_NAME, "rb")
 try:
-    WebDriverWait(driver, 15).until(EC.element_to_be_clickable(table_button)).click()
+    WebDriverWait(driver, 15).until(EC.element_to_be_clickable(button1)).click()
 except WebDriverException as e:
     print('failed')
     print(e)
