@@ -57,7 +57,7 @@ page_source = str(driver.page_source)
 # Создание объекта BeautifulSoup для парсинга HTML-кода
 soup = BeautifulSoup(page_source, 'html.parser')
 #работа с html
- 
+code = 876124103
 # Получение названия товара
 try:
 	name_element = soup.find('h1')
