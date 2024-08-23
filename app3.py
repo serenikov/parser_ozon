@@ -43,15 +43,22 @@ driver.implicitly_wait(10)
 driver.get(url)
 os.system('clear')
 tm.sleep(2)
-try: 
-	button1 = driver.find_element(By.CLASS_NAME, "rb")
-	button1.click()
-	print('Нажали "обновить"')
-	tm.sleep(10)
-	print('Подождали 10 сек')
-except:
-	button1 = ''
-	print('не нажали "обновить"')
+#try: 
+#	button1 = driver.find_element(By.CLASS_NAME, "rb")
+#	button1.click()
+#	print('Нажали "обновить"')
+#	tm.sleep(10)
+#	print('Подождали 10 сек')
+#except:
+#	button1 = ''
+#	print('не нажали "обновить"')
+button1 = driver.find_element(By.CLASS_NAME, "rb")
+try:
+    WebDriverWait(driver, 15).until(EC.element_to_be_clickable(table_button)).click()
+except WebDriverException as e:
+    print('failed')
+    print(e)
+
 
 body = driver.find_element(By.TAG_NAME, 'body')
 body.send_keys(Keys.PAGE_DOWN)	
