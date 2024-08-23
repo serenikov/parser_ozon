@@ -68,7 +68,7 @@ while True:
 		button1.click();
 		n = n + 1
 		print('Нажали "обновить" ' + str(n) + ' раз')
-		tm.sleep(30)
+		tm.sleep(10)
 		try:
 			button2 = driver.find_element(By.ID, "stickyHeader")
 			elementTwo = wait.until(EC.element_to_be_clickable(button2))
@@ -77,8 +77,10 @@ while True:
 			break
 		except:
 			print('Не нашли "поиск"')
+			break
 	except:
 		print('не нажали "обновить"')
+		break
 		#print(e)
   
 		#button1 = driver.find_element(By.CLASS_NAME, "rb")
