@@ -33,3 +33,4 @@ gspread==6.1.2
 httplib2
 oauth2client
 regex==2024.7.24
+chromedriver-autoinstaller
