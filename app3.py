@@ -95,10 +95,10 @@ try:
 	button1 = driver.find_element(By.XPATH,"//button[@class='rb']")
 	#WebDriverWait(driver, 20).until(EC.element_to_be_clickable(button1)).click()
 	#actions = ActionChains(driver)
-	wait.until(EC.visibility_of_element_located(button1))
+	#wait.until(EC.visibility_of_element_located(button1))
 	#actions.move_to_element(button1).click().perform()
 	driver.execute_script("arguments[0].click();", button1)
-#	driver.execute_script("let reload = function () { const url = new URL(location.href); url.searchParams.delete("abt_att"); window.location.href = url.toString() };let complain = function () {location.href = "https://www.ozon.ru/complaint/support/?incident_id=fab_20240809190719_01J4W8KJ4Q5NCZET3N36ZD0ZZD&token=1.qPY7w3Qn9n5NFALjquPtibfn6xSFa8lI4_-pEnbsG6lqom8MNk_NuY7N8BHVMA&via=html&platform=web&back_url=/";};function p() {setTimeout(() => {const container = document.querySelector(".mc");if (!container) {return}window.parent.postMessage(`{ "formHeight": "${container.offsetHeight + parseFloat(getComputedStyle(document.documentElement).fontSize)}" }`, '*')}, 200);}window.addEventListener('load', p)", button1)
+#	driver.execute_script("arguments[0].load();", button1)
 	print('Нажали "обновить"')
 except WebDriverException as e:
 	print('не нажали "обновить"')
