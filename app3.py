@@ -69,7 +69,7 @@ while True:
 		n = n + 1
 		print('Нажали "обновить" ' + str(n) + ' раз')
 		tm.sleep(30)
-		elementTwo = wait.until(EC.element_to_be_clickable(By.id("stickyHeader")));
+		elementTwo = wait.until(EC.element_to_be_clickable(By.ID, "stickyHeader"));
 		elementTwo.click();
 		break;
 		#button1 = driver.find_element(By.CLASS_NAME, "rb")
