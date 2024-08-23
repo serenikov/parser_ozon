@@ -6,11 +6,13 @@ import regex
 from bs4 import BeautifulSoup
 import time as tm
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
 # Создание пустого DataFrame для хранения данных
 df = pd.DataFrame(columns=['Код товара',
                            'Название товара', 
@@ -21,7 +23,14 @@ df = pd.DataFrame(columns=['Код товара',
                            'ID продавца',
                            'Статус'])
 url = 'https://www.ozon.ru/product/876124103/'
-driver = webdriver.Chrome()
+
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+
+driver = webdriver.Chrome('/home/<user>/chromedriver',chrome_options=chrome_options)
+#driver = webdriver.Chrome()
 tm.sleep(2)
 driver.implicitly_wait(10)
 driver.get(url)
