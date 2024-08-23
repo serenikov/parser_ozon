@@ -30,9 +30,14 @@ df = pd.DataFrame(columns=['Код товара',
 #service = Service(executable_path=r'/usr/lib/chromium-browser/chromedriver')
 chrome_options = webdriver.ChromeOptions()
 #chrome_options.add_argument("--headless")
-chrome_options.add_argument("start-maximized")
+#chrome_options.add_argument("start-maximized")
 #chrome_options.add_argument('--no-sandbox')
 #chrome_options.add_argument('--disable-dev-shm-usage')
+options.add_argument("--headless") # Runs Chrome in headless mode.
+options.add_argument('--no-sandbox') # # Bypass OS security model
+options.add_argument('start-maximized')
+options.add_argument('disable-infobars')
+options.add_argument("--disable-extensions")
 chromedriver_autoinstaller.install()
 url = 'https://www.ozon.ru/product/876124103/'
 driver = webdriver.Chrome(options=chrome_options)
