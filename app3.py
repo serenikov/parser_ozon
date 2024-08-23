@@ -24,14 +24,17 @@ df = pd.DataFrame(columns=['Код товара',
                            'Ссылка продавца',
                            'ID продавца',
                            'Статус'])
-url = 'https://www.ozon.ru/product/876124103/'
 
-service = Service(executable_path=r'/usr/lib/chromium-browser/chromedriver')
+
+#service = Service(executable_path=r'/usr/lib/chromium-browser/chromedriver')
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument('--no-sandbox')
-driver = webdriver.Chrome(service=service, options=chrome_options)
+chrome_options.add_argument('--disable-dev-shm-usage')
 chromedriver_autoinstaller.install()
+url = 'https://www.ozon.ru/product/876124103/'
+driver = webdriver.Chrome(options=chrome_options)
+
 driver.get(url)
 
 #driver = webdriver.Chrome()
