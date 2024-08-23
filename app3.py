@@ -65,8 +65,8 @@ try:
 	WebDriverWait(driver, 20).until(EC.element_to_be_clickable(button1)).click()
 	actions = ActionChains(driver)
 	wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "rb")))
-	action.click(on_element = button1)
-	action.perform()
+	actions.click(on_element = button1)
+	actions.perform()
 	print('Нажали "обновить"')
 except WebDriverException as e:
 	print('не нажали "обновить"')
