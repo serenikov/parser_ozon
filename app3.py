@@ -61,8 +61,8 @@ tm.sleep(30)
 #	print('не нажали "обновить"')
 wait = WebDriverWait(driver, 10)
 n = 0
-while (true){
-	try {
+while True:
+	try:
 		WebElement elementOne = wait.until(ExpectedConditions.elementToBeClickable(By.CLASS_NAME("rb")));
 		elementOne.click();
 		n = n + 1
@@ -76,10 +76,10 @@ while (true){
 		#driver.execute_script("arguments[0].click();", button1)
 		#print('Нажали "обновить"')
 		#button2 = driver.find_element(By.ID, "stickyHeader")
-	} catch (Exception e){
-		//log
-    }	
-}
+	except WebDriverException as e:
+		print('не нажали "обновить"')
+		print(e)
+    	
 #try:
 #	button1 = driver.find_element(By.CLASS_NAME, "rb")
 #	#WebDriverWait(driver, 20).until(EC.element_to_be_clickable(button1)).click()
