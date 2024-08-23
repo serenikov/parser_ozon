@@ -39,10 +39,10 @@ driver = webdriver.Chrome(options=chrome_options)
 
 #driver = webdriver.Chrome()
 tm.sleep(2)
-driver.implicitly_wait(10)
+driver.implicitly_wait(30)
 driver.get(url)
 os.system('clear')
-tm.sleep(2)
+tm.sleep(10)
 #try: 
 #	button1 = driver.find_element(By.CLASS_NAME, "rb")
 #	button1.click()
@@ -55,11 +55,11 @@ tm.sleep(2)
 
 try:
 	button1 = driver.find_element(By.CLASS_NAME, "rb")
-	WebDriverWait(driver, 15).until(EC.element_to_be_clickable(button1)).click()
+	WebDriverWait(driver, 20).until(EC.element_to_be_clickable(button1)).click()
 except WebDriverException as e:
 	print('failed')
 	print(e)
-
+tm.sleep(30)
 
 body = driver.find_element(By.TAG_NAME, 'body')
 body.send_keys(Keys.PAGE_DOWN)	
