@@ -5,7 +5,10 @@ import requests
 import regex
 from bs4 import BeautifulSoup
 import time as tm
+import sys
+sys.path.insert(0,'/usr/lib/chromium-browser/chromedriver')
 from selenium import webdriver
+import chromedriver_autoinstaller
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -24,10 +27,11 @@ df = pd.DataFrame(columns=['Код товара',
 url = 'https://www.ozon.ru/product/876124103/'
 
 service = Service(executable_path=r'/usr/lib/chromium-browser/chromedriver')
-chrome_options = Options()
+chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument('--no-sandbox')
 driver = webdriver.Chrome(service=service, options=chrome_options)
+chromedriver_autoinstaller.install()
 driver.get(url)
 
 #driver = webdriver.Chrome()
