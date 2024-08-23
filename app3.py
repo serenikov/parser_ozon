@@ -59,15 +59,14 @@ tm.sleep(10)
 #except:
 #	button1 = ''
 #	print('не нажали "обновить"')
-wait = WebDriverWait(driver, 10)
+wait = WebDriverWait(driver, 30)
 try:
 	button1 = driver.find_element(By.CLASS_NAME, "rb")
-	WebDriverWait(driver, 20).until(EC.element_to_be_clickable(button1)).click()
-	actions = ActionChains(driver)
+	#WebDriverWait(driver, 20).until(EC.element_to_be_clickable(button1)).click()
+	#actions = ActionChains(driver)
 	wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "rb")))
 	#actions.move_to_element(button1).click().perform()
-	JavascriptExecutor js = (JavascriptExecutor)driver;
-	js.executeScript("arguments[0].click();", button1);
+	driver.execute_script("arguments[0].click();", button1)
 	print('Нажали "обновить"')
 except WebDriverException as e:
 	print('не нажали "обновить"')
