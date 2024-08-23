@@ -46,10 +46,10 @@ driver = webdriver.Chrome(options=chrome_options)
 
 #driver = webdriver.Chrome()
 tm.sleep(2)
-driver.implicitly_wait(60)
+driver.implicitly_wait(360)
 driver.get(url)
 os.system('clear')
-tm.sleep(10)
+tm.sleep(30)
 #try: 
 #	button1 = driver.find_element(By.CLASS_NAME, "rb")
 #	button1.click()
@@ -59,21 +59,41 @@ tm.sleep(10)
 #except:
 #	button1 = ''
 #	print('не нажали "обновить"')
-wait = WebDriverWait(driver, 20)
-try:
-	button1 = driver.find_element(By.CLASS_NAME, "rb")
-	#WebDriverWait(driver, 20).until(EC.element_to_be_clickable(button1)).click()
-	#actions = ActionChains(driver)
-	wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "rb")))
-	#actions.move_to_element(button1).click().perform()
-	driver.execute_script("arguments[0].click();", button1)
-	print('Нажали "обновить"')
-except WebDriverException as e:
-	print('не нажали "обновить"')
-	print('failed')
-	print(e)
-tm.sleep(30)
-print('Подождали 30 сек')
+wait = WebDriverWait(driver, 10)
+n = 0
+while (true){
+	try {
+		WebElement elementOne = wait.until(ExpectedConditions.elementToBeClickable(By.CLASS_NAME("rb")));
+		elementOne.click();
+		n = n + 1
+		print('Нажали "обновить" ' + str(n) + ' раз')
+		tm.sleep(30)
+		WebElement elementTwo = wait.until(ExpectedConditions.elementToBeClickable(By.id("stickyHeader")));
+		elementTwo.click();
+		break;
+		#button1 = driver.find_element(By.CLASS_NAME, "rb")
+		#wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "rb")))
+		#driver.execute_script("arguments[0].click();", button1)
+		#print('Нажали "обновить"')
+		#button2 = driver.find_element(By.ID, "stickyHeader")
+	} catch (Exception e){
+		//log
+    }	
+}
+#try:
+#	button1 = driver.find_element(By.CLASS_NAME, "rb")
+#	#WebDriverWait(driver, 20).until(EC.element_to_be_clickable(button1)).click()
+#	#actions = ActionChains(driver)
+#	wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "rb")))
+#	#actions.move_to_element(button1).click().perform()
+#	driver.execute_script("arguments[0].click();", button1)
+#	print('Нажали "обновить"')
+#except WebDriverException as e:
+#	print('не нажали "обновить"')
+#	print('failed')
+#	print(e)
+tm.sleep(10)
+#print('Подождали 30 сек')
 
 body = driver.find_element(By.TAG_NAME, 'body')
 body.send_keys(Keys.PAGE_DOWN)	
