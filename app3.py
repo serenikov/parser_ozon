@@ -7,8 +7,7 @@ from bs4 import BeautifulSoup
 import time as tm
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
-
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
@@ -24,10 +23,11 @@ df = pd.DataFrame(columns=['Код товара',
                            'Статус'])
 url = 'https://www.ozon.ru/product/876124103/'
 
+service = Service(executable_path=r'/usr/lib/chromium-browser/chromedriver')
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument('--no-sandbox')
-driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=chrome_options)
+driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.get(url)
 
 #driver = webdriver.Chrome()
