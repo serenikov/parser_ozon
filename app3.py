@@ -76,10 +76,10 @@ while True:
 			print('Нажали "поиск"')
 			break
 		except:
-			print('Не нашли "поиск")
+			print('Не нашли "поиск"')
 	except:
 		print('не нажали "обновить"')
-		print(e)
+		#print(e)
   
 		#button1 = driver.find_element(By.CLASS_NAME, "rb")
 		#wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "rb")))
