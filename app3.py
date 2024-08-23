@@ -9,6 +9,7 @@ import sys
 sys.path.insert(0,'/usr/lib/chromium-browser/chromedriver')
 from selenium import webdriver
 import chromedriver_autoinstaller
+from selenium.webdriver import ActionChains
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -28,7 +29,8 @@ df = pd.DataFrame(columns=['Код товара',
 
 #service = Service(executable_path=r'/usr/lib/chromium-browser/chromedriver')
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+#chrome_options.add_argument("--headless")
+chrome_options.add_argument("start-maximized")
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 chromedriver_autoinstaller.install()
@@ -52,14 +54,21 @@ tm.sleep(10)
 #except:
 #	button1 = ''
 #	print('не нажали "обновить"')
-
+wait = WebDriverWait(driver, 10)
 try:
 	button1 = driver.find_element(By.CLASS_NAME, "rb")
 	WebDriverWait(driver, 20).until(EC.element_to_be_clickable(button1)).click()
+	actions = ActionChains(driver)
+	wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "rb")))
+	action.click(on_element = button1)
+	action.perform()
+	print('Нажали "обновить"')
 except WebDriverException as e:
+	print('не нажали "обновить"')
 	print('failed')
 	print(e)
 tm.sleep(30)
+print('Подождали 30 сек')
 
 body = driver.find_element(By.TAG_NAME, 'body')
 body.send_keys(Keys.PAGE_DOWN)	
