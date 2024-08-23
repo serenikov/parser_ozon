@@ -31,8 +31,8 @@ df = pd.DataFrame(columns=['Код товара',
 chrome_options = webdriver.ChromeOptions()
 #chrome_options.add_argument("--headless")
 chrome_options.add_argument("start-maximized")
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
+#chrome_options.add_argument('--no-sandbox')
+#chrome_options.add_argument('--disable-dev-shm-usage')
 chromedriver_autoinstaller.install()
 url = 'https://www.ozon.ru/product/876124103/'
 driver = webdriver.Chrome(options=chrome_options)
