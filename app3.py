@@ -46,7 +46,7 @@ driver = webdriver.Chrome(options=chrome_options)
 
 #driver = webdriver.Chrome()
 tm.sleep(2)
-driver.implicitly_wait(30)
+driver.implicitly_wait(60)
 driver.get(url)
 os.system('clear')
 tm.sleep(10)
@@ -59,7 +59,7 @@ tm.sleep(10)
 #except:
 #	button1 = ''
 #	print('не нажали "обновить"')
-wait = WebDriverWait(driver, 30)
+wait = WebDriverWait(driver, 20)
 try:
 	button1 = driver.find_element(By.CLASS_NAME, "rb")
 	#WebDriverWait(driver, 20).until(EC.element_to_be_clickable(button1)).click()
