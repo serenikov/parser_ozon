@@ -73,7 +73,7 @@ while True:
 			button2 = driver.find_element(By.ID, "stickyHeader")
 			elementTwo = wait.until(EC.element_to_be_clickable(button2))
 			elementTwo.click();
-			print('Нажали "поиск")
+			print('Нажали "поиск"')
    			break;
 		except:
 			print('Не нашли "поиск")
