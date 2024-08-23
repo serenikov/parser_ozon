@@ -63,8 +63,9 @@ wait = WebDriverWait(driver, 10)
 n = 0
 while True:
 	try:
-		elementOne = wait.until(EC.element_to_be_clickable(By.CLASS_NAME("rb")));
-		elementOne.click();
+		button1 = driver.find_element(By.CLASS_NAME, "rb")
+		elementOne = wait.until(EC.element_to_be_clickable(button1)));
+		button1.click();
 		n = n + 1
 		print('Нажали "обновить" ' + str(n) + ' раз')
 		tm.sleep(30)
