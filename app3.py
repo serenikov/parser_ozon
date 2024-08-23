@@ -64,7 +64,7 @@ n = 0
 while True:
 	try:
 		button1 = driver.find_element(By.CLASS_NAME, "rb")
-		elementOne = wait.until(EC.element_to_be_clickable(button1)));
+		elementOne = wait.until(EC.element_to_be_clickable(button1));
 		button1.click();
 		n = n + 1
 		print('Нажали "обновить" ' + str(n) + ' раз')
