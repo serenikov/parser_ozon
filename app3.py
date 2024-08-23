@@ -35,7 +35,7 @@ chromedriver_autoinstaller.install()
 url = 'https://www.ozon.ru/product/876124103/'
 driver = webdriver.Chrome(options=chrome_options)
 
-driver.get(url)
+#driver.get(url)
 
 #driver = webdriver.Chrome()
 tm.sleep(2)
@@ -52,12 +52,13 @@ tm.sleep(2)
 #except:
 #	button1 = ''
 #	print('не нажали "обновить"')
-button1 = driver.find_element(By.CLASS_NAME, "rb")
+
 try:
-    WebDriverWait(driver, 15).until(EC.element_to_be_clickable(button1)).click()
+	button1 = driver.find_element(By.CLASS_NAME, "rb")
+	WebDriverWait(driver, 15).until(EC.element_to_be_clickable(button1)).click()
 except WebDriverException as e:
-    print('failed')
-    print(e)
+	print('failed')
+	print(e)
 
 
 body = driver.find_element(By.TAG_NAME, 'body')
